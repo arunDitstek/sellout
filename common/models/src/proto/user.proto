@@ -1,0 +1,396 @@
+syntax = "proto3";
+
+import "error.proto";
+
+message User {
+  string _id = 1;
+  string email = 2;
+  string password = 3;
+  string passwordHash = 4;
+  string firstName = 5;
+  string lastName = 6;
+  int32 createdAt = 7;
+  string phoneNumber = 8;
+  int32 phoneNumberVerifiedAt = 9;
+  string emailVerifyCode = 10;
+  int32 emailVerifiedAt = 11;
+  string forgotPasswordCode = 12;
+  int32 lastChangedPasswordAt = 13;
+  string orgContextId = 14;
+  string orgRole = 15;
+  string phoneNumberWaitingForVerify = 16;
+  string emailWaitingForVerify = 17;
+  string  preferredLogin = 18;
+  string phoneVerifyCode = 19;
+  int32 authTimeOut = 20;
+  int32 authAttempts = 21;
+  repeated string secondaryEmails = 22;
+  bool secondaryEmail = 23;
+}
+
+// Create User
+
+message CreateUserRequest {
+  string spanContext = 0;
+  User user = 1;
+  string role = 2;
+}
+
+message CreateUserResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+}
+
+// Verify Email
+
+message SendUserEmailVerificationRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string email = 2;
+}
+
+message SendUserEmailVerificationResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+message VerifyUserEmailRequest {
+  string spanContext = 0;
+  string emailVerificationToken = 1;
+}
+
+message VerifyUserEmailResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  bool emailVerified = 2;
+}
+
+//Verify Phone
+message SendUserPhoneVerificationRequest {
+  string spanContext = 1;
+  string userId = 2;
+}
+
+message SendUserPhoneVerificationResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+}
+
+message VerifyUserPhoneNumberRequest {
+  string spanContext = 1;
+  string userId = 2;
+  string phoneVerificationToken = 3;
+}
+
+message VerifyUserPhoneNumberResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  bool phoneVerified = 3;
+}
+
+// Set User Organization Context Id
+
+message SetUserOrgContextIdRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string orgId = 2;
+}
+
+message SetUserOrgContextIdResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+  string token = 4;
+}
+
+// Auth User
+
+message AuthUserRequest {
+  string spanContext = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message AuthUserResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+  string token = 4;
+}
+
+// Phone Authentication
+
+message UserPhoneAuthenticationRequest {
+  string spanContext = 0; 
+  string email = 1;
+  string phoneNumber = 2; 
+  bool isLogin = 3;
+}
+
+message UserPhoneAuthenticationResponse {
+  StatusCode status = 1; 
+  repeated Error errors = 2; 
+  User user = 3; 
+  string phoneNumber = 4; 
+}
+
+message VerifyUserPhoneAuthenticationRequest {
+  string spanContext = 0;
+  string email = 1;
+  string phoneNumber = 2;
+  string phoneVerificationToken = 3;
+}
+
+message VerifyUserPhoneAuthenticationResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+  string token = 4;
+}
+
+// Forgot Password
+message ForgotUserPasswordRequest {
+  string spanContext = 1;
+  string email = 2;
+}
+
+message ForgotUserPasswordResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+}
+
+message ResetUserPasswordRequest {
+  string spanContext = 1;
+  string forgotPasswordCode = 2;
+  string password = 3;
+}
+
+message ResetUserPasswordResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+}
+
+message ResetUserPasswordInAppRequest {
+  string spanContext = 1;
+  string userId = 2;
+  string oldPassword = 3;
+  string newPassword = 4;
+}
+
+message ResetUserPasswordInAppResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+}
+
+// update user password - for when user only has phone login and wants to add password
+message SetUserPasswordRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string password = 2;
+}
+
+message SetUserPasswordResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  User user = 2;
+}
+
+// Find User
+
+message FindUserByIdRequest {
+  string spanContext = 1;
+  string userId = 2;
+}
+
+message FindUserByIdResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+}
+
+message FindUserByEmailRequest {
+  string spanContext = 1;
+  string email = 2;
+  string phoneNumber = 3;
+  string promoCode = 4;
+  string eventId = 5;
+  string seasonId = 6;
+}
+
+message FindUserByEmailResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+  int32 promoLeft = 4;
+}
+
+message AddSecondaryEmailRequest {
+  string spanContext = 1;
+  string email = 2;
+  string userId = 3;
+}
+
+// Secondary email
+message AddSecondaryEmailResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+}
+
+message UpdateSecondaryEmailRequest {
+  string spanContext = 1;
+  string email = 2;
+  string userId = 3;
+}
+
+message UpdateSecondaryEmailResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+}
+
+message DeleteSecondaryEmailRequest {
+  string spanContext = 1;
+  string email = 2;
+  string userId = 3;
+}
+
+message DeleteSecondaryEmailResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+}
+
+message MakeSecondaryEmailPrimaryRequest {
+  string spanContext = 1;
+  string email = 2;
+  string userId = 3;
+}
+
+message MakeSecondaryEmailPrimaryResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+}
+
+message UpdateBasicUserInfoRequest {
+  string spanContext = 1;
+  string userId = 2;
+  string firstName = 3;
+  string lastName = 4;
+  string imageUrl = 5;
+}
+
+message UpdateBasicUserInfoResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+}
+
+
+
+// update user phoneNumber and email
+
+message UpdateUserInfoRequest {
+  string spanContext = 1;
+  string _id = 2;
+  string email = 3;
+  string phoneNumber = 4;
+}
+
+message UpdateUserInfoResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+}
+
+// Update User Phone and Email
+
+message UpdateUserPhoneNumberRequest {
+  string spanContext = 1;
+  string userId = 2;
+  string newPhoneNumber = 3;
+}
+
+message UpdateUserPhoneNumberResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+}
+
+message UpdateUserEmailRequest {
+  string spanContext = 1;
+  string userId = 2;
+  string newEmail = 3;
+}
+
+message UpdateUserEmailResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+}
+
+// Update login method
+message UpdateUserPreferredLoginRequest {
+  string spanContext = 1;
+  string userId = 2;
+  string preferredLogin = 3;
+}
+
+message UpdateUserPreferredLoginResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  User user = 3;
+}
+
+// Delete User
+message DeleteUnverifiedUserRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string email = 2;
+  string phoneNumber = 3;
+}
+
+message DeleteUnverifiedUserResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  bool deleted = 2;
+}
+
+service UserService {
+  // Create
+  rpc createUser(CreateUserRequest) returns (CreateUserResponse) {}
+  // Verify
+  rpc sendUserEmailVerification(SendUserEmailVerificationRequest) returns (SendUserEmailVerificationResponse) {}
+  rpc verifyUserEmail(VerifyUserEmailRequest) returns (VerifyUserEmailResponse) {}
+  rpc sendUserPhoneVerification(SendUserPhoneVerificationRequest) returns (SendUserPhoneVerificationResponse) {}
+  rpc verifyUserPhoneNumber(VerifyUserPhoneNumberRequest) returns (VerifyUserPhoneNumberResponse) {}
+  // Auth
+  rpc authUser(AuthUserRequest) returns (AuthUserResponse) {}
+  rpc sendUserPhoneAuthentication(UserPhoneAuthenticationRequest) returns (UserPhoneAuthenticationResponse) {}
+  rpc verifyUserPhoneAuthentication(VerifyUserPhoneAuthenticationRequest) returns (VerifyUserPhoneAuthenticationResponse) {}
+  // Org Context 
+  rpc setUserOrgContextId(SetUserOrgContextIdRequest) returns (SetUserOrgContextIdResponse) {}
+  // Forgot Passord
+  rpc forgotUserPassword(ForgotUserPasswordRequest) returns (ForgotUserPasswordResponse) {}
+  rpc resetUserPassword(ResetUserPasswordRequest) returns (ResetUserPasswordResponse) {}
+  // Find
+  rpc findUserById(FindUserByIdRequest) returns (FindUserByIdResponse) {}
+  rpc findUserByEmail(FindUserByEmailRequest) returns (FindUserByEmailResponse) {}
+  // Update
+  rpc updateBasicUserInfo(UpdateBasicUserInfoRequest) returns (UpdateBasicUserInfoResponse) {}
+  rpc updateUserInfo(UpdateUserInfoRequest) returns (UpdateUserInfoResponse) {}
+  rpc updateUserPhoneNumber(UpdateUserPhoneNumberRequest) returns (UpdateUserPhoneNumberResponse) {}
+  rpc updateUserEmail(UpdateUserEmailRequest) returns (UpdateUserEmailResponse) {}
+  rpc updateUserPreferredLogin(UpdateUserPreferredLoginRequest) returns (UpdateUserPreferredLoginResponse) {}
+  rpc setUserPassword(SetUserPasswordRequest) returns (SetUserPasswordResponse) {}
+  rpc resetUserPasswordInApp(ResetUserPasswordInAppRequest) returns (ResetUserPasswordInAppResponse) {}
+  //  Secondary Email
+  rpc addSecondaryEmail(AddSecondaryEmailRequest) returns (AddSecondaryEmailResponse) {}
+  rpc updateSecondaryEmail(UpdateSecondaryEmailRequest) returns (UpdateSecondaryEmailResponse) {}
+  rpc deleteSecondaryEmail(DeleteSecondaryEmailRequest) returns (DeleteSecondaryEmailResponse) {}
+  rpc makeSecondaryEmailPrimary(MakeSecondaryEmailPrimaryRequest) returns (MakeSecondaryEmailPrimaryResponse) {}
+  // Delete
+  rpc deleteUnverifiedUser(DeleteUnverifiedUserRequest) returns (DeleteUnverifiedUserResponse) {}
+}

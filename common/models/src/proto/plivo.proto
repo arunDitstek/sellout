@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+import "error.proto";
+
+message SendPlivoSMSRequest {
+  string spanContext = 0;
+  string phoneNumber = 1;
+  string message = 2;
+}
+
+message SendPlivoSMSResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+message SendPlivoMMSRequest {
+  string spanContext = 0;
+  string phoneNumber = 1;
+  string message = 2;
+  string mediaUrl = 3;
+}
+
+message SendPlivoMMSResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+service PlivoService {
+  rpc sendPlivoSMS(SendPlivoSMSRequest) returns (SendPlivoSMSResponse) {}
+  rpc sendPlivoMMS(SendPlivoMMSRequest) returns (SendPlivoMMSResponse) {}
+}

@@ -1,0 +1,318 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+/****************************************************************************************
+* User
+****************************************************************************************/
+
+message QueueUserWelcomeEmailRequest {
+  string spanContext = 0;
+  string toAddress = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string redirectUrl = 4;
+}
+
+message QueueUpdatedEmailRequest {
+  string spanContext = 0;
+  string toAddress = 1;
+  string firstName = 2;
+  string lastName = 3;
+}
+message QueueUserResetPasswordEmailRequest {
+  string spanContext = 0;
+  string toAddress = 1;
+  string resetPasswordUrl = 4;
+}
+message QueueUserAuthenticationCodeEmailRequest {
+  string spanContext = 0;
+  string toAddress = 1;
+  string authCode = 4;
+}
+message QueueInviteToOrganizationEmailRequest {
+  string spanContext = 0;
+  string toAddress = 1;
+  string orgName = 2;
+  string redirectUrl = 3;
+  string orgLogo = 4;
+  string roleName = 5;
+}
+
+/****************************************************************************************
+  * Order
+****************************************************************************************/
+
+message OrderSummaryItem {
+  string name = 0;
+  string price = 1;
+  string fee = 2;
+  string seats = 3;
+  string description = 4;
+  string type = 5;
+  string days = 6;
+}
+
+message OrderRefundItem {
+  string name = 0;
+  string refundedAmount = 1;
+  string description = 2;
+  string days = 3;
+}
+
+message orderSheetEmailRequest {
+  string toAddress = 0;
+  string orgName = 1;
+  string url = 2;
+}
+
+message customerSheetEmailRequest {
+  string toAddress = 0;
+  string orgName = 1;
+  string url = 2;
+}
+
+message waitListEmailRequest {
+  string toAddress = 0;
+  string orgName = 1;
+  string eventName = 2;
+  string description = 3;
+  string venueName = 4;
+  string eventDate = 5;
+  string name = 6;
+
+
+}
+
+message dayIdsTimeObj { 
+  int32 startsAt = 0;
+  int32 endsAt = 1;
+  int32 doorsAt = 2;
+}
+
+message QueueOrderReceiptEmailRequest {
+  string spanContext = 0;
+  string toAddress = 1;
+  string firstName = 2;
+  string eventName = 3;
+  string orgName = 4;
+  string eventSubtitle = 5;
+  string eventDate = 6;
+  string venueName = 7;
+  string doorsAt = 8;
+  string showAt = 9;
+  string qrCodeAt = 10;
+  string confirmationCode = 11;
+  string orgEmail = 12;
+  string orgPhoneNumber = 13;
+  string orgAddress1 = 14;
+  string orgAddress2 = 15;
+  string eventPosterImageUrl = 16;
+  string cityState = 17;
+  string orgLogoUrl = 18;
+  repeated OrderSummaryItem orderItems = 19;
+  string orderTotal = 20;
+  string venueAddress1 = 21;
+  string venueAddress2 = 22;
+  string orderFees = 23;
+  string orderSubtotal = 24;
+  string venuePosterImageUrl = 25;
+  bool isRSVP = 26;
+  string orderTax = 28;
+  int32 eventStart = 29;
+  int32 eventEnd = 30;
+  string timezone = 31;
+  repeated string dayIds = 32;
+  repeated dayIdsTimeObj  dayIdsTime = 33;
+  repeated dayIdsTimeObj dayIdsTimeCalendar = 34;
+  string ticketDeliveryType = 35;
+  string physicalDeliveryInstructions = 36;
+  string promoterFee = 37;
+  string processingFee = 38;
+}
+
+message QueueOrderQRCodeEmailRequest {
+  string spanContext = 0;
+  string toAddress = 1;
+  string firstName = 2;
+  string eventName = 3;
+  string orgName = 4;
+  string eventSubtitle = 5;
+  string eventDate = 6;
+  string venueName = 7;
+  string doorsAt = 8;
+  string showAt = 9;
+  string qrCodeAt = 10;
+  string confirmationCode = 11;
+  string orgEmail = 12;
+  string orgPhoneNumber = 13;
+  string orgAddress1 = 14;
+  string orgAddress2 = 15;
+  string eventPosterImageUrl = 16;
+  string cityState = 17;
+  string orgLogoUrl = 18;
+  repeated OrderSummaryItem orderItems = 19;
+  string orderTotal = 20;
+  string qrCodeUrl = 21;
+  string venueAddress1 = 22;
+  string venueAddress2 = 23;
+  string orderFees = 24;
+  string orderSubtotal = 25;
+  string venuePosterImageUrl = 26;
+  bool isRSVP = 27;
+  string orderTax = 28;
+  int32 eventStart = 29;
+  int32 eventEnd = 30;
+  string timezone = 31;
+  repeated dayIdsTimeObj  dayIdsTime = 32;
+  repeated dayIdsTimeObj dayIdsTimeCalendar = 33;
+  string ticketDeliveryType = 34;
+  string physicalDeliveryInstructions = 35;
+  string promoterFee = 36;
+  string processingFee = 37;
+  string discount = 38;
+  string url = 39;
+  string description = 40;
+}
+
+message QueueSeasonOrderReceiptEmailRequest {
+  string spanContext = 0;
+  string toAddress = 1;
+  string firstName = 2;
+  string eventName = 3;
+  string orgName = 4;
+  string eventSubtitle = 5;
+  string eventDate = 6;
+  string venueName = 7;
+  string doorsAt = 8;
+  string showAt = 9;
+  string qrCodeAt = 10;
+  string confirmationCode = 11;
+  string orgEmail = 12;
+  string orgPhoneNumber = 13;
+  string orgAddress1 = 14;
+  string orgAddress2 = 15;
+  string eventPosterImageUrl = 16;
+  string cityState = 17;
+  string orgLogoUrl = 18;
+  repeated OrderSummaryItem orderItems = 19;
+  string orderTotal = 20;
+  string qrCodeUrl = 21;
+  string venueAddress1 = 22;
+  string venueAddress2 = 23;
+  string orderFees = 24;
+  string orderSubtotal = 25;
+  string venuePosterImageUrl = 26;
+  bool isRSVP = 27;
+  string orderTax = 28;
+  int32 eventStart = 29;
+  int32 eventEnd = 30;
+  string timezone = 31;
+  repeated dayIdsTimeObj  dayIdsTime = 32;
+  repeated dayIdsTimeObj dayIdsTimeCalendar = 33;
+  repeated Event events = 34;
+  string promoterFee = 35;
+  string processingFee = 36;
+}
+
+message QueueOrderRefundEmailRequest {
+  string spanContext = 0;
+  string toAddress = 1;
+  string firstName = 2;
+  string eventName = 3;
+  string orgName = 4;
+  string eventSubtitle = 5;
+  string eventDate = 6;
+  string venueName = 7;
+  string doorsAt = 8;
+  string showAt = 9;
+  string qrCodeAt = 10;
+  string confirmationCode = 11;
+  string orgEmail = 12;
+  string orgPhoneNumber = 13;
+  string orgAddress1 = 14;
+  string orgAddress2 = 15;
+  string eventPosterImageUrl = 16;
+  string cityState = 17;
+  string orgLogoUrl = 18;
+  string venueAddress1 = 19;
+  string venueAddress2 = 20;
+  string venuePosterImageUrl = 21;
+  bool isRSVP = 22;
+  repeated OrderRefundItem orderRefundItems = 23;
+  string orderSubtotalRefunded = 24;
+  string orderFeesRefunded = 25;
+  string orderTotalRefunded = 26;
+  string refundReason = 27;
+  repeated dayIdsTimeObj  dayIdsTime = 28;
+  repeated dayIdsTimeObj dayIdsTimeCalendar = 29;
+  string timezone = 30;
+  string promoterFee = 31;
+  string processingFee = 32;
+  string tax = 33;
+  // string ticketDeliveryType = 30;
+  // string physicalDeliveryInstructions = 31;
+}
+
+message QueueOrderCanceledEmailRequest {
+  string spanContext = 0;
+  string toAddress = 1;
+  string firstName = 2;
+  string eventName = 3;
+  string orgName = 4;
+  string eventSubtitle = 5;
+  string eventDate = 6;
+  string venueName = 7;
+  string doorsAt = 8;
+  string showAt = 9;
+  string qrCodeAt = 10;
+  string confirmationCode = 11;
+  string orgEmail = 12;
+  string orgPhoneNumber = 13;
+  string orgAddress1 = 14;
+  string orgAddress2 = 15;
+  string eventPosterImageUrl = 16;
+  string cityState = 17;
+  string orgLogoUrl = 18;
+  string venueAddress1 = 19;
+  string venueAddress2 = 20;
+  string venuePosterImageUrl = 21;
+  bool isRSVP = 22;
+  repeated OrderRefundItem orderRefundItems = 23;
+  string orderSubtotalRefunded = 24;
+  string orderFeesRefunded = 25;
+  string orderTotalRefunded = 26;
+  string refundReason = 27;
+  repeated dayIdsTimeObj  dayIdsTime = 28;
+  repeated dayIdsTimeObj dayIdsTimeCalendar = 29;
+  string timezone = 30;
+}
+
+
+message salesReportEmailRequest {
+  string toAddress = 0;
+  string orgName = 1;
+  string pdf = 2;
+}
+
+service EmailService {
+  // User
+  rpc queueUserWelcomeEmail (QueueUserWelcomeEmailRequest) returns (google.protobuf.Empty) {}
+  rpc queueUpdatedEmail (QueueUpdatedEmailRequest) returns (google.protobuf.Empty) {}
+  rpc queueUserResetPasswordEmail (QueueUserResetPasswordEmailRequest) returns (google.protobuf.Empty) {}
+  rpc queueUserAuthenticationCodeEmail (QueueUserAuthenticationCodeEmailRequest) returns (google.protobuf.Empty) {}
+  rpc queueInviteToOrganizationEmailRequest (QueueInviteToOrganizationEmailRequest) returns (google.protobuf.Empty) {}
+  // Order
+  rpc queueOrderReceiptEmail (QueueOrderReceiptEmailRequest) returns (google.protobuf.Empty) {}
+  rpc queueOrderQRCodeEmail (QueueOrderQRCodeEmailRequest) returns (google.protobuf.Empty) {}
+  rpc queueSeasonOrderReceiptEmail (QueueSeasonOrderReceiptEmailRequest) returns (google.protobuf.Empty) {}
+  rpc queueOrderRefundEmail (QueueOrderRefundEmailRequest) returns (google.protobuf.Empty) {}
+  rpc queueOrderCanceledEmail (QueueOrderCanceledEmailRequest) returns (google.protobuf.Empty) {}
+  rpc orderSheetEmail (orderSheetEmailRequest) returns (google.protobuf.Empty) {}
+  rpc orderQRCodeEmailOnDay (QueueOrderQRCodeEmailRequest) returns (google.protobuf.Empty) {}
+  rpc salesReportEmail (salesReportEmailRequest) returns (google.protobuf.Empty) {}
+  rpc customerSheetEmail (customerSheetEmailRequest) returns (google.protobuf.Empty) {}
+  rpc waitListEmail (QueueOrderQRCodeEmailRequest) returns (google.protobuf.Empty) {}
+  rpc notifyEmail (QueueOrderQRCodeEmailRequest) returns (google.protobuf.Empty) {}
+  rpc immediateNotifyEmail (QueueOrderQRCodeEmailRequest) returns (google.protobuf.Empty) {}
+}

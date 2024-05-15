@@ -1,0 +1,14 @@
+<mj-section background-color="#ffffff" padding-left="15px" padding-right="15px" padding-top="0px" padding-bottom="5px">
+  <mj-column width="39%">
+    <mj-text color="#3E4C6F" font-size="18px" line-height="21px" font-weight="500" padding-bottom="0">
+      Confirmation Code
+    </mj-text>
+  </mj-column>
+  <mj-column width="61%">
+    <mj-text color="#3E4C6F" font-size="18px" line-height="21px" font-weight="400" padding-bottom="0" align="right" text-transform="uppercase">
+      {{ confirmationCode }}
+    </mj-text>
+  </mj-column>
+</mj-section>
+
+<mj-include path="./content-divider.mjml" />

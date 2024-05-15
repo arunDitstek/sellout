@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+import "error.proto";
+import "common.proto";
+
+message Organization {
+  string _id = 0;
+  string userId = 1;
+  int32 createdAt = 2;
+  string authyId = 3;
+  string stripeId = 4;
+  string orgName = 5;
+  repeated string orgUrls = 6;
+  Address address = 7;
+  string orgLogoUrl = 8;
+  string orgColorHex = 9;
+  string bio = 10;
+  string email = 11;
+  string phoneNumber = 12;
+  string facebookPixelId = 13;
+  string googleAnalyticsId = 14;
+  bool isSeasonTickets = 15;
+  bool isTegIntegration = 16;
+  string tegClientID =17;
+  string tegSecret = 18;
+  string tegURL = 19;
+  string ticketFormat = 20;
+  bool validateMemberId = 21;
+  string locationId = 22;
+}
+
+// Create Organization
+message CreateOrganizationRequest {
+  string spanContext = 0;
+  string userId = 1;
+}
+
+message CreateOrganizationResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Organization organization = 3;
+}
+
+// List OrgUrls
+message ListOrganizationUrlsRequest {
+  string spanContext = 0;
+}
+
+message ListOrganizationUrlsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated string orgUrls = 2;
+}
+
+// Update Organization
+message UpdateOrganizationRequest {
+  string spanContext = 0;
+  Organization organization = 1;
+  string orgId = 2;
+}
+
+message UpdateOrganizationResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Organization organization = 2;
+}
+
+/****************************************************************************************
+  Find Organizations
+****************************************************************************************/
+
+message OrganizationQuery {
+  string name = 0;
+  repeated string orgIds = 1; 
+  int32 startDate = 2;
+  int32 endDate = 3;
+  bool any = 4;
+  string orgQuery = 5;
+
+}
+
+message QueryOrganizationsRequest {
+  string spanContext = 0;
+  OrganizationQuery query = 1;
+  Pagination pagination = 2;
+}
+
+message QueryOrganizationsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Organization organizations = 2;
+}
+
+// Find Organization
+message FindOrganizationRequest {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+message FindOrganizationResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Organization organization = 2;
+}
+
+service OrganizationService {
+  // Create
+  rpc createOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse) {}
+  // List
+  rpc listOrganizationUrls(ListOrganizationUrlsRequest) returns (ListOrganizationUrlsResponse) {}
+  // Query
+  rpc queryOrganizations(QueryOrganizationsRequest) returns (QueryOrganizationsResponse) {}
+  // Update
+  rpc updateOrganization(UpdateOrganizationRequest) returns (UpdateOrganizationResponse) {}
+  // Find
+  rpc findOrganization(FindOrganizationRequest) returns (FindOrganizationResponse) {}  
+}

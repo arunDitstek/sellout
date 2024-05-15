@@ -1,0 +1,175 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "order.proto";
+
+package Broadcast;
+
+/****************************************************************************************
+* Order
+*****************************************************************************************/
+
+message OrderCreatedNotification {
+  string spanContext = 0;
+  Order order = 1;
+}
+
+message OrderRefundedNotification {
+  string spanContext = 0;
+  Order order = 1;
+  string orgId = 2;
+  string userId = 3;
+  string orderId = 4;
+  string eventId = 5;
+  repeated string venueIds = 6;
+  repeated string artistIds = 7;
+  int32 refundAmount = 8;
+  int32 totalRefundedAmount = 9;
+  bool isFullyRefunded = 10;
+  bool isFullyCanceled = 11;
+  repeated string refundedTickets = 12;
+  repeated string refundedUpgrades = 13;
+}
+
+message Ticket {
+  string ticketId = 0;
+  int32 qty = 1;
+}
+
+message Upgrade {
+  string upgradeId = 0;
+  int32 qty = 1;
+}
+
+message TicketType {
+  string ticketTypeId = 0;
+  string ticketTierId = 1;
+  int32 qty = 2;
+}
+
+message UpgradeType {
+  string upgradeTypeId = 0;
+  int32 qty = 1;
+}
+
+
+/****************************************************************************************
+* Event
+*****************************************************************************************/
+
+message EventCreatedNotification {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+  string seasonId = 3;
+}
+
+message EventPublishedNotification {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+}
+
+message EventUpdatedNotification {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+}
+
+
+/****************************************************************************************
+* Season
+*****************************************************************************************/
+
+message SeasonCreatedNotification {
+  string spanContext = 0;
+  string orgId = 1;
+  string seasonId = 2;
+}
+
+// message EventPublishedNotification {
+//   string spanContext = 0;
+//   string orgId = 1;
+//   string eventId = 2;
+// }
+
+message SeasonUpdatedNotification {
+  string spanContext = 0;
+  string orgId = 1;
+  string seasonId = 2;
+}
+
+/****************************************************************************************
+* Organization
+*****************************************************************************************/
+
+message OrganizationCreatedNotification {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+message OrganizationUpdatedNotification {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+/****************************************************************************************
+* Venue
+*****************************************************************************************/
+
+message VenueCreatedNotification {
+  string spanContext = 0;
+  string orgId = 1;
+  string venueId = 2;
+}
+
+message VenueUpdatedNotification {
+  string spanContext = 0;
+  string orgId = 1;
+  string venueId = 2;
+}
+
+
+
+/****************************************************************************************
+* Artist
+*****************************************************************************************/
+
+message ArtistCreatedNotification {
+  string spanContext = 0;
+  string orgId = 1;
+  string artistId = 2;
+}
+
+message ArtistUpdatedNotification {
+  string spanContext = 0;
+  string orgId = 1;
+  string artistId = 2;
+}
+
+service Publisher {
+  // Order
+  rpc orderCreated(OrderCreatedNotification) returns (google.protobuf.Empty) {}
+  rpc orderSeasonCreated(OrderCreatedNotification) returns (google.protobuf.Empty) {}
+  rpc orderRefunded(OrderRefundedNotification) returns (google.protobuf.Empty) {}
+  // Event
+  rpc eventCreated(EventCreatedNotification) returns (google.protobuf.Empty) {}
+  rpc eventPublished(EventPublishedNotification) returns (google.protobuf.Empty) {}
+  rpc eventUpdated(EventUpdatedNotification) returns (google.protobuf.Empty) {}
+
+  // Season
+  rpc seasonCreated(SeasonCreatedNotification) returns (google.protobuf.Empty) {}
+  // rpc seasonUpdated(SeasonUpdatedNotification) returns (google.protobuf.Empty) {}
+
+
+  // Organization
+  rpc organizationCreated(OrganizationCreatedNotification) returns (google.protobuf.Empty) {}
+  rpc organizationUpdated(OrganizationUpdatedNotification) returns (google.protobuf.Empty) {}
+  // Venue
+  rpc venueCreated(VenueCreatedNotification) returns (google.protobuf.Empty) {}
+  rpc venueUpdated(VenueUpdatedNotification) returns (google.protobuf.Empty) {}
+  // Artist
+  rpc artistCreated(ArtistCreatedNotification) returns (google.protobuf.Empty) {}
+  rpc artistUpdated(ArtistUpdatedNotification) returns (google.protobuf.Empty) {}
+
+}

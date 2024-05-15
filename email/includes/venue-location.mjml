@@ -1,0 +1,28 @@
+<mj-section background-color="#ffffff" padding="0px 25px" vertical-align="middle">
+  <mj-column vertical-align="middle" width="40%" padding="0px" css-class="mobile-image">
+    <mj-image
+      padding="0px"
+      align="right"
+      src="{{{ venuePosterImageUrl }}}"
+      border-radius="5px"
+    />
+  </mj-column>
+  <mj-column vertical-align="middle" width="60%" padding="0px 0px 0px 15px" css-class="mobile-image-text">
+    <mj-text color="#333333" font-size="14px" line-height="16px" font-weight="600" padding-left="0px" padding-top="0px" padding-bottom="5px">
+      {{ venueName }}
+    </mj-text>
+    <mj-text color="#333333" font-size="14px" line-height="20px" padding-left="0px" padding-top="0px" padding-bottom="0px">
+      {{ venueAddress1 }}
+    </mj-text>
+    <mj-text color="#333333" font-size="14px" line-height="20px" padding-left="0px" padding-top="0px" padding-bottom="10px">
+      {{ venueAddress2 }}
+    </mj-text>
+    <mj-text color="#FF6802" font-size="14px" line-height="16px" padding-left="0px" padding-top="0px" padding-bottom="0px">
+      <a href="http://maps.google.com/?daddr={{{ venueAddress1 }}} {{{ venueAddress2 }}}" class="text-link">Get Directions</a>
+    </mj-text>
+  </mj-column>
+</mj-section>
+
+<mj-include path="./content-divider.mjml" />
+
+<!-- "https://via.placeholder.com/150" -->

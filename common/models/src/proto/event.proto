@@ -1,0 +1,663 @@
+syntax = "proto3";
+
+import "error.proto";
+import "common.proto";
+import "organization.proto";
+import "venue.proto";
+
+message Event {
+  string _id = 1;
+  string orgId = 2;
+  string type = 3;
+  string name = 4;
+  string subtitle = 5;
+  string description = 6;
+  string posterImageUrl = 7;
+  string venueId = 8;
+  int32 createdAt = 9;
+  bool publishable = 10;
+  string seatingChartKey = 11;
+  string age = 12;
+  bool active = 13;
+  string userAgreement = 14;
+  string processAs = 15;
+  string sendQRCode = 16;
+  Address location  = 17;
+  EventSchedule schedule = 18;
+  repeated Performance performances = 19;
+  repeated TicketType ticketTypes = 20;
+  repeated TicketHold holds = 21;
+  repeated EventUpgrade upgrades = 22;
+  repeated EventPromotion promotions = 23;
+  repeated EventCustomFields customFields = 24;
+  TicketExchange exchange = 25;
+  Metrics metrics = 26; 
+  bool published = 27;
+  bool salesBeginImmediately = 28;
+  bool cancel = 29;
+  bool taxDeduction = 30;
+  bool isMultipleDays = 31;
+  string totalDays = 32;
+  string seasonId = 33;
+  string  physicalDeliveryInstructions = 34;
+  string ticketDeliveryType = 35;
+  bool isGuestTicketSale = 36;
+  string guestTicketPerMember = 37;
+  repeated SubscriptionSalesReport subscription = 38;
+  bool isHold = 39;
+  string stub = 40;
+  repeated WaitList waitList = 41;
+}
+
+message PublicEvent {
+  string _id = 1;
+  string orgId = 2;
+  string type = 3;
+  string name = 4;
+  string subtitle = 5;
+  string description = 6;
+  string posterImageUrl = 7;
+  string venueId = 8;
+  int32 createdAt = 9;
+  bool publishable = 10;
+  string seatingChartKey = 11;
+  string age = 12;
+  bool active = 13;
+  string userAgreement = 14;
+  string processAs = 15;
+  string sendQRCode = 16;
+  Address location  = 17;
+  bool published = 18;
+  bool salesBeginImmediately = 19;
+  bool cancel = 20;
+  bool taxDeduction = 21;
+  int32 startsAt = 22;
+  int32 endsAt = 23;
+  string venue  = 24;
+  string status  = 25;
+  string venueTimezone  = 26;
+  int32 announceAt = 27;
+  string stub = 28;
+  EventSchedule schedule = 29;
+  repeated EventTaskTypes ticketTypes = 30;
+}
+
+message EventTaskTypes{
+  string name = 1;
+  int32 purchaseLimit = 2;
+  int32 value  = 3;
+  int32 price  = 4;
+  bool ticketsAvailable = 5;
+}
+
+message PublicEventDetails {
+
+  string _id = 1;
+  string orgId = 2;
+  string type = 3;
+  string name = 4;
+  string subtitle = 5;
+  string description = 6;
+  string posterImageUrl = 7;
+  string venueId = 8;
+  int32 createdAt = 9;
+  bool publishable = 10;
+  string seatingChartKey = 11;
+  string age = 12;
+  bool active = 13;
+  string userAgreement = 14;
+  string processAs = 15;
+  string sendQRCode = 16;
+  Address location  = 17;
+  EventSchedule schedule = 18;
+  repeated Performance performances = 19;
+  int32 lowestPrice = 20;
+  bool published = 21;
+  bool salesBeginImmediately = 22;
+  bool cancel = 23;
+  bool taxDeduction = 24;
+  Organization organization = 25;
+  Venue venue = 26;
+  string status  = 27;
+  int32 remainingQty  = 28;
+  string stub = 29;
+
+}
+
+message EventSchedule {
+  int32 announceAt = 0;
+  int32 ticketsAt = 1;
+  int32 ticketsEndAt = 2;
+  int32 startsAt = 3;
+  int32 endsAt = 4;
+}
+
+message PerformanceSchedule {
+  int32 doorsAt = 1;
+  int32 startsAt = 2;
+  int32 endsAt = 3;
+}
+
+message Performance {
+  string _id = 1;
+  string name = 2;
+  repeated string headliningArtistIds = 3;
+  repeated string openingArtistIds = 4;
+  string venueStageId = 5;
+  int32 price = 6;
+  string posterImageUrl = 7;
+  string videoLink = 8;
+  string songLink = 9;
+  repeated PerformanceSchedule schedule = 10;
+}
+
+message SubscriptionSalesReport {
+  string _id = 1;
+  string email = 2;
+  string frequency = 3;
+}
+
+message WaitList {
+  string name = 1;
+  string email = 2;
+  string phoneNumber = 3;
+  int32 createdAt = 4;
+}
+
+message TicketType {
+  string _id = 1;
+  string name = 2;
+  int32 totalQty = 3;
+  int32 remainingQty = 4;
+  int32 purchaseLimit = 5;
+  repeated string performanceIds = 6;
+  repeated TicketTier tiers = 7;
+  bool visible = 8;
+  string description = 9;
+  bool rollFees = 10;
+  string promo = 11;
+  string values = 12;
+  repeated string dayIds = 13;
+}
+
+message TicketTier {
+  string _id = 1;
+  string name = 2;
+  int32 price = 3;
+  int32 startsAt = 4;
+  int32 endsAt = 5;
+  int32 totalQty = 6;
+  int32 remainingQty = 7;
+}
+
+message TicketHold {
+  string _id = 1;
+  string name = 2;
+  string ticketType = 3;
+  int32 qty = 4;
+  int32 totalHeld = 5;
+  int32 totalCheckedIn = 6;
+  int32 totalReleased = 7;
+  int32 totalOutstanding = 8;
+  string ticketTypeId = 9;
+
+}
+
+message EventUpgrade {
+  string _id = 0;
+  string name = 1;
+  int32 price = 2;
+  int32 totalQty = 3;
+  int32 remainingQty = 4;
+  int32 purchaseLimit = 5;
+  bool complimentary = 6;
+  string complimentaryWith = 7;
+  int32 complimentaryQty = 8;
+  repeated string ticketTypeIds = 9;
+  string imageUrl = 10;
+  string description = 11;
+  bool visible = 12;
+  bool rollFees = 13;
+  string values = 14;
+}
+
+message EventPromotion {
+  string _id = 0;
+  string code = 1;
+  string type = 2;
+  int32 remainingQty = 3;
+  int32 totalQty = 4;
+  repeated string ticketTypeIds = 5;
+  repeated string upgradeIds = 6;
+  bool active = 7;
+  int32 startsAt = 8;
+  int32 endsAt = 9;
+  int32 useLimit = 10;
+  string discountType = 11;
+  double discountValue = 12;
+  int32 overRideMax = 13;
+  int32 overRideMaxUpg = 14;
+  string appliesTo = 15;
+
+}
+
+message EventCustomFields {
+  string _id = 0;
+  string label = 1;
+  string type = 2;
+  optional int32 minLength = 3;
+  optional int32 maxLength = 4;
+  optional int32 minValue = 5;
+  optional int32 maxValue = 6;
+  bool required = 7;
+  repeated string options = 8;
+  bool active = 9;
+}
+
+message TicketExchange {
+  string allowed = 0;
+  int32 percent = 1;
+}
+
+// Create Event
+message CreateEventRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  Event event = 2;
+}
+
+message CreateEventResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Event event = 2;
+}
+
+// Update Event
+message UpdateEventRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  Event event = 2;
+}
+
+message UpdateEventResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Event event = 2;
+}
+
+/****************************************************************************************
+  Publish Event
+****************************************************************************************/
+
+message PublishEventRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+  repeated string publishSiteIds = 3;
+  repeated string unpublishSiteIds = 4;
+  bool published = 5;
+}
+
+message PublishEventResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Event event = 2;
+}
+
+/****************************************************************************************
+  Find Event
+****************************************************************************************/
+
+message EventQuery {
+  string name = 0;
+  repeated string eventIds = 1;
+  repeated string venueIds = 2; 
+  repeated string artistIds = 3;
+  repeated string userIds = 4; 
+  int32 startDate = 5;
+  int32 endDate = 6;
+  string sortBy = 7;
+  int32 orderBy = 8;
+  bool published = 9;
+  bool any = 10;
+  bool cancel = 11;
+}
+
+message SearchQuery {
+  string name = 0;
+  string email = 1;
+  string phoneNumber = 2;
+}
+
+message QueryEventsRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  EventQuery query = 2;
+  Pagination pagination = 3;
+  string eventId = 4;
+
+}
+
+message QueryEventsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Event events = 2;
+}
+
+message QuerySearchEventsRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  SearchQuery query = 2;
+  Pagination pagination = 3;
+  string eventId = 4;
+}
+
+message QuerySearchEventsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Event events = 2;
+}
+
+message QueryEventsListRequest {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+
+message QueryEventsListResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated PublicEvent events = 2;
+} 
+message EventTicketsRequest {
+  string spanContext = 0;
+  string eventId = 1;
+  string promoCode = 2;
+  string seasonId = 3;
+}
+
+message EventDiscountRequest {
+  string spanContext = 0;
+  string eventId = 1;
+  string discountCode = 2;
+  string seasonId = 3;
+  string userId = 4;
+  repeated string selectedTicket = 5;
+}
+
+message EventTickets {
+  string promoType = 0; 
+  int32 remainingQty = 2;
+  bool active = 3;
+  int32 startsAt = 4;
+  int32 endsAt = 5;
+  repeated TicketType eventTickets = 1;
+  repeated EventUpgrade eventUpgrades = 6;
+  int32 overRideMax = 7;
+  int32 overRideMaxUpg = 8;
+  string discountType = 9;
+  double discountValue = 10;
+  string appliesTo = 11;
+  repeated string ticketTypeIds = 12;
+
+}
+
+message EventTicketsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated EventTickets tickets = 2;
+}
+
+// Find Event By Id
+message FindEventByIdRequest {
+  string spanContext = 0;
+  string eventId = 1;
+  string stub = 2;
+}
+
+message FindEventByIdResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Event event = 2;
+}
+message FindEventDetailsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  PublicEventDetails event = 2;
+}
+
+// List Events
+message ListEventsRequest {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+message ListEventsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Event events = 2;
+}
+
+// Delete Event
+message DeleteEventRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+}
+
+message DeleteEventResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  int32 ordersCount = 2;
+  int32 ordersRefundedCount = 3;
+  bool deleted = 4;
+}
+
+// Cancel Event
+message CancelEventRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+}
+
+message CancelEventResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  int32 ordersCount = 2;
+  int32 ordersRefundedCount = 3;
+  bool cancel = 4;
+}
+
+// Cancel Ticket
+message CancelTicketRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+  repeated string ticketTypeId = 3;
+  repeated string upgradesTypeId = 4;
+  string promotionCode = 5;
+  repeated string upgradeId = 6;
+  string discountCode = 7;
+}
+
+message CancelTicketResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  bool cancel = 2;
+}
+// Duplicate Event
+message DuplicateEventRequest {
+  string spanContext = 0;
+  string eventId = 1;
+}
+
+message DuplicateEventResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Event event = 2;
+}
+
+message SalesReportResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Event event = 2;
+}
+
+message SalesReportRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  SalesReportParams params = 2;
+}
+
+
+message NotifyMeReportResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Event event = 2;
+}
+
+message NotifyMeReportRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string email = 2;
+  string eventId = 3;
+}
+
+
+
+message WaitListResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Event event = 2;
+  string message = 3;
+}
+
+message WaitListRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  WaitListParams params = 2;
+  string eventId = 3;
+  string type = 4;
+  WaitListQuery query = 5;
+}
+ 
+message SalesReportParams {
+  string email = 0;
+  string frequency = 1;
+  string eventId = 2;
+}
+
+message WaitListParams {
+  string name = 0;
+  string email = 1;
+  string phoneNumber = 2;
+  int32 createdAt = 3;
+}
+
+message DeleteSubscriptionRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+  string subscriptionId = 3;
+}
+
+message DeleteSubscriptionResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Event event = 2;
+}
+
+
+message HoldTicketRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId=2;
+  TicketHold hold = 3;
+}
+
+message HoldTicketResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Event event = 2;
+}
+
+message GenerateWaitListReportRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  WaitListQuery query = 2;
+  string userId = 3;
+  string eventId = 4;
+}
+
+message GenerateWaitListReportResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string url = 2;
+  string message = 3;
+}
+
+message WaitListQuery {
+  repeated string eventIds = 0;
+  repeated string venueIds = 1; 
+  repeated string artistIds = 2;
+  repeated string userIds = 3;
+  string name = 4;
+  string email = 5;
+  string phoneNumber = 6;
+  bool any = 7;
+  string orgId = 8;
+  string eventQuery = 9;
+}
+
+
+
+service EventService {
+  // Create
+  rpc createEvent(CreateEventRequest) returns (CreateEventResponse) {}
+  rpc publishEvent(PublishEventRequest) returns (PublishEventResponse) {}
+  // Update
+  rpc updateEvent(UpdateEventRequest) returns (UpdateEventResponse) {}
+  // Query
+  rpc queryEvents(QueryEventsRequest) returns (QueryEventsResponse) {}
+  rpc searchEvents(QuerySearchEventsRequest) returns (FindEventByIdResponse) {}
+
+  // list of all event
+  rpc queryEventsList(QueryEventsListRequest) returns (QueryEventsListResponse) {}
+  // events ticket by promo
+  rpc eventTickets(EventTicketsRequest) returns (EventTicketsResponse) {}
+
+  rpc eventDiscounts(EventDiscountRequest) returns (EventTicketsResponse) {}
+
+  // Find 
+  rpc findEventById(FindEventByIdRequest) returns (FindEventByIdResponse) {} 
+  // Find 
+  rpc findEventDetails(FindEventByIdRequest) returns (FindEventDetailsResponse) {}  
+  // List
+  rpc listEvents(ListEventsRequest) returns (ListEventsResponse) {}
+  // Delete 
+  rpc deleteEvent(DeleteEventRequest) returns (DeleteEventResponse) {}
+  // Cancel 
+  rpc cancelEvent(CancelEventRequest) returns (CancelEventResponse) {}
+  // Cancel 
+  rpc cancelTicket(CancelTicketRequest) returns (CancelTicketResponse) {}
+  // Duplicate
+  rpc duplicateEvent(DuplicateEventRequest) returns (DuplicateEventResponse) {}
+
+  rpc listEventBySeasonId(FindSeasonByIdRequest) returns (ListEventsResponse) {}
+
+  // Sales report
+  rpc salesReport(SalesReportRequest) returns (SalesReportResponse) {}
+  
+  // Notify Me
+  rpc notifyEvent(NotifyMeReportRequest) returns (FindEventByIdResponse) {}
+
+  // Wait List
+  rpc createWaitList(WaitListRequest) returns (WaitListResponse) {}
+
+
+  rpc deleteSubscription(DeleteSubscriptionRequest) returns (DeleteSubscriptionResponse) {}
+
+  rpc updateHolds(HoldTicketRequest) returns (HoldTicketResponse) {}
+  rpc generateWaitListReport(GenerateWaitListReportRequest) returns (GenerateWaitListReportResponse) {}
+
+}

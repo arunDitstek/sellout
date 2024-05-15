@@ -1,0 +1,28 @@
+const connect: any = await terminal.connectReader(selectedReader);
+
+        if (connect.error) {
+          const message = `Failed to connect to reader: ${connect.error}`;
+          console.error(message);
+          setError(message);
+          return;
+        } else {
+          setConnected(true);
+        }
+
+        const collect: any = await terminal.collectPaymentMethod(paymentClientSecret as string);
+
+        if(collect.error) {
+          const message = `Failed to collect payment: ${connect.error}`;
+          console.error(message);
+          setError(message);
+          return;
+        }
+
+        const capture: any = await terminal.processPayment(collect.paymentIntent);
+
+        if (capture.error) {
+          const message = `Failed to capture payment: ${connect.error}`;
+          console.error(message);
+          setError(message);
+          return;
+        }

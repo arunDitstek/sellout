@@ -1,0 +1,14 @@
+<mj-section background-color="transparent" padding-top="15px" padding-bottom="0px">
+  <mj-column padding="0px">
+    <mj-text color="#828282" font-size="12px" line-height="14px" padding-bottom="0px" align="center">
+      sent with ❤ by Sellout
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-section background-color="#F9F9F9" padding="0">
+  <mj-column padding="0px">
+    <mj-text color="#828282" font-size="12px" line-height="14px" padding-bottom="25px" align="center">
+      506 N Broadway Ave, Bozeman, MT 59715
+    </mj-text>
+  </mj-column>
+</mj-section>

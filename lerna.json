@@ -1,0 +1,30 @@
+{
+  "version": "0.0.278",
+  "packages": [
+    "artist",
+    "backstage",
+    "common/elements",
+    "common/models",
+    "common/service",
+    "common/ui",
+    "common/utils",
+    "email",
+    "event",
+    "fee",
+    "file-upload",
+    "order",
+    "organization",
+    "plivo",
+    "purchase-portal",
+    "role",
+    "seating",
+    "stripe",
+    "task-queue",
+    "user",
+    "user-profile",
+    "venue",
+    "season",
+    "web-flow",
+    "graphql"
+  ]
+}

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+message File {
+  bytes file = 0;
+  string filename = 1;
+  string mimetype = 2;
+  string encoding = 3;
+  string url = 4;
+}
+
+message UploadFileRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  repeated File files = 2;
+  string userId = 3;
+  bool gzip = 4;
+}
+
+message UploadFileResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated File files = 2;
+}
+
+
+service FileUploadService {
+  rpc uploadFile(UploadFileRequest) returns (UploadFileResponse) {}
+}

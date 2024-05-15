@@ -1,0 +1,329 @@
+{
+  "_id": "5d88f46ec5599ee6a3b23c87",
+  "lastUpdated": "2019-09-23T16:35:58.791Z",
+  "createdOn": "2019-07-18T21:02:50.944Z",
+  "name": "Events",
+  "slug": "events",
+  "singularName": "Event",
+  "fields": [{
+    "name": "Organization",
+    "slug": "organization",
+    "type": "ItemRef",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "a8790237708a7293dbfbd2d61c22a727",
+    "validations": {
+      "collectionId": "5d88f46ec5599e364cb23c8a"
+    }
+  }, {
+    "name": "Event Type",
+    "slug": "event-type",
+    "type": "ItemRef",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "0504c9979c9aeeb5a8c8564511b720c1",
+    "validations": {
+      "collectionId": "5d88f46ec5599ed085b23c8b"
+    }
+  }, {
+    "name": "Subtitle",
+    "slug": "subtitle",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "cab402eb0a49f83f53c3e0e98f603e1d",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Poster Image",
+    "slug": "poster-image",
+    "type": "ImageRef",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "19069819dc63203af5a383788f1d9c6d"
+  }, {
+    "name": "Headlining Performers",
+    "slug": "headlining-performers",
+    "type": "ItemRefSet",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "a04c0223a6613ef87c20850e756a1503",
+    "validations": {
+      "collectionId": "5d88f46ec5599e2157b23c89"
+    }
+  }, {
+    "name": "Opening Performers",
+    "slug": "opening-performers",
+    "type": "ItemRefSet",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "b6dbae5389f903859c01110a494d1922",
+    "validations": {
+      "collectionId": "5d88f46ec5599e2157b23c89"
+    }
+  }, {
+    "name": "Venue",
+    "slug": "venue",
+    "type": "ItemRef",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "1fcf3c4c41dfb0b98ed060a526f549ba",
+    "validations": {
+      "collectionId": "5d88f46ec5599e0e7db23c88"
+    }
+  }, {
+    "name": "Performance Date/Time",
+    "slug": "performance-date-time",
+    "type": "Date",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "810d697929714ba7ba8a45818eab9f32",
+    "validations": {
+      "format": "date-time"
+    }
+  }, {
+    "name": "Door Time",
+    "slug": "door-time",
+    "type": "Date",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "75317c3e5d31a06e0ec3df9485108fbe",
+    "validations": {
+      "format": "date-time"
+    }
+  }, {
+    "name": "Announcement Date",
+    "slug": "announcement-date",
+    "type": "Date",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "0d3900e34d9107390c499de2c275cd4f",
+    "validations": {
+      "format": "date-time"
+    }
+  }, {
+    "name": "On Sale Date",
+    "slug": "on-sale-date",
+    "type": "Date",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "d0c85ba61f21ab3305b4ec982c0890dc",
+    "validations": {
+      "format": "date-time"
+    }
+  }, {
+    "name": "Lowest Price",
+    "slug": "lowest-price",
+    "type": "Number",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "1309a32edec342eb383d1ac450b7f91f",
+    "validations": {
+      "format": "decimal",
+      "precision": 2,
+      "allowNegative": false
+    }
+  }, {
+    "name": "Highest Price",
+    "slug": "highest-price",
+    "type": "Number",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "aabb5ee02fb5672ebd22bf5fee3d938e",
+    "validations": {
+      "format": "decimal",
+      "precision": 2,
+      "allowNegative": false
+    }
+  }, {
+    "name": "Remaining Ticket Quantity",
+    "slug": "remaining-ticket-quantity",
+    "type": "Number",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "86bdeff76ace85a7993e3ba3a920dd68",
+    "validations": {
+      "format": "integer",
+      "precision": 1,
+      "allowNegative": false
+    }
+  }, {
+    "name": "Event Description",
+    "slug": "event-description",
+    "type": "RichText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "d752331cc6b1b3ec5c5fd846e4ade894"
+  }, {
+    "name": "Age",
+    "slug": "age",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "9375fe0a7b3f878e10dffca859129ea4",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Plain Text Description",
+    "slug": "plain-text-description",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "72f580cdbfaac3ebb43d4ddcfcc07ad0",
+    "validations": {
+      "singleLine": false
+    }
+  }, {
+    "name": "YouTube ID",
+    "slug": "youtube-id",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "6e5c2c532d75cda4af28f9c4ab9ec8f8",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Spotify ID",
+    "slug": "spotify-link",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "59c6f1c098b7a0d70c4710be3e0444b2",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Button Text",
+    "slug": "button-text",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "1dac40ca92e4e3452d1e6a60bc424eaa",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Sellout ID",
+    "slug": "sellout-id",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "8cafd1f51876370cd3401f3b3c6a0d71",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Name",
+    "slug": "name",
+    "type": "PlainText",
+    "required": true,
+    "editable": true,
+    "id": "49baddec654463be5352b2b3ce25ab25",
+    "validations": {
+      "maxLength": 256
+    }
+  }, {
+    "name": "Slug",
+    "slug": "slug",
+    "type": "PlainText",
+    "required": true,
+    "editable": true,
+    "unique": true,
+    "id": "80634b57ce392fd7d373c362158da286",
+    "validations": {
+      "maxLength": 256,
+      "messages": {
+        "pattern": "Must be alphanumerical and not contain any spaces or special characters",
+        "maxLength": "Must be less than 256 characters"
+      }
+    }
+  }, {
+    "name": "Archived",
+    "slug": "_archived",
+    "type": "Bool",
+    "required": true,
+    "editable": true,
+    "id": "f779753cb46b5601606e04b39f7698a4",
+    "default": false
+  }, {
+    "name": "Draft",
+    "slug": "_draft",
+    "type": "Bool",
+    "required": true,
+    "editable": true,
+    "id": "dc3618dc92c6211492169f78da077b93",
+    "default": false
+  }, {
+    "name": "Created On",
+    "slug": "created-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "e0396a7aeb5e87001c3fb8ec58c37ac6"
+  }, {
+    "name": "Updated On",
+    "slug": "updated-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "dc0a546f2110e8cc356ab52088d8d9b2"
+  }, {
+    "name": "Published On",
+    "slug": "published-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "8b7a1fa783dabf39f0fc7e34f3740589"
+  }, {
+    "name": "Created By",
+    "slug": "created-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "8f603bbbd0d43eb0861647b9a3e6231f"
+  }, {
+    "name": "Updated By",
+    "slug": "updated-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "c962163672558cb3936dd39c08d457fb"
+  }, {
+    "name": "Published By",
+    "slug": "published-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "d9620cdd28aeeb5d8a0f8d46543da5a9"
+  }],
+  "_meta": {
+    "rateLimit": {
+      "limit": 60,
+      "remaining": 48
+    }
+  }
+}

@@ -1,0 +1,55 @@
+config:
+  target: "http://localhost:4000"
+  phases:
+    - duration: 1
+      arrivalRate: 1
+    # - duration: 60
+    #   arrivalRate: 50
+    #   rampTo: 100
+scenarios:
+  - flow:
+    - post:
+        headers:
+          authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2REo3NVlRZzEiLCJlbWFpbCI6Im1pa2VAc2VsbG91dC5pbyIsIm9yZ0lkIjoiMmZ4cFkzM2Z4IiwiaWF0IjoxNjA1NjMxNjE1fQ.A85nWLTyg8H0535SDs6xPKkZIccTK65zy1wQhdzuspU'
+        url: "/graphql"
+        capture:
+          - json: "$"
+            as: body
+        json: 
+          query: |
+            mutation createOrder($params: OrderInput!) {
+              createOrder(params: $params) {
+                _id
+              }
+            }
+          variables: |
+            {
+            "params": {
+              "userId": "6DJ75YQg1",
+              "orgId": "2fxpY33fx",
+              "eventId": "S7301S-9k9",
+              "tickets": [
+                {
+                  "name": "General Admission",
+                  "ticketTypeId": "gWVCKVPJ2",
+                  "ticketTierId": "UuP83kcBBx",
+                  "price": 0,
+                  "rollFees": false
+                }
+              ],
+              "upgrades": [
+                {
+                  "name": "New Upgrade",
+                  "upgradeId": "DMOCWNdGj",
+                  "price": 0,
+                  "rollFees": false
+                }
+              ],
+              "type": "RSVP",
+              "channel": "Online",
+              "promotionCode": "",
+              "customFields": [],
+              "paymentMethodType": "None",
+              "paymentIntentId": ""
+            },
+            }

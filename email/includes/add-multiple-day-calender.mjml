@@ -1,0 +1,38 @@
+  <mj-section padding-top="20px">
+      <mj-raw>
+        {{#each dayIdsTimeCalendar}}
+      </mj-raw>
+      <mj-group padding="0px">
+        <mj-column background-color="#444" padding-bottom="0px" padding-top="0px" width="100%">
+          <mj-text mj-class="preheader" color="#fff" font-size="12px">Day {{day}}</mj-text>
+        </mj-column>
+        <mj-column width="50%">
+          <mj-text mj-class="preheader" padding-bottom="5px" padding-top="5px" text-transform="uppercase" font-size="12px" >DOORS AT: {{eventDate}}</mj-text>
+          <mj-text mj-class="preheader" font-size="20px" text-transform="uppercase" >{{doorsAt}}</mj-text>
+          <mj-text mj-class="preheader" padding-bottom="10px" padding-top="10px" text-transform="uppercase" font-size="12px"> {{ venueName }} | {{cityState}}</mj-text>
+        </mj-column>
+        <mj-column width="50%">
+          <mj-text mj-class="preheader" padding-bottom="5px" padding-top="5px" align="right" text-transform="uppercase" font-size="12px">SHOW AT: {{eventDate}}</mj-text>
+          <mj-text mj-class="preheader" font-size="20px" align="right" text-transform="uppercase" >{{showAt}}</mj-text>
+          <mj-text mj-class="preheader" padding-bottom="5px" padding-top="5px" align="right" text-transform="uppercase" font-size="12px">  {{ venueName }} | {{cityState}}</mj-text>
+        </mj-column>
+        <mj-column vertical-align="middle" width="100%" padding="0px" css-class="mobile-image" padding-left="20px">
+          <mj-divider border-color="#F45E43"></mj-divider>
+          <mj-text color="#333333" font-size="14px" line-height="20px" font-weight="600" padding-left="0px" padding-top="10px" padding-bottom="0px">
+            Add to Calendar
+          </mj-text>
+        </mj-column>
+        <mj-column vertical-align="middle" width="100%" padding="0" css-class="mobile-image-text" padding-left="20px">
+          <mj-text color="#FF6802" font-size="14px" line-height="16px" padding-left="0px" padding-top="10px" padding-bottom="10px">
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates={{{  startsAt  }}}%2F{{{  endsAt  }}}&location={{{ venueAddress1 }}} {{{ venueAddress2 }}}&text={{{  eventName  }}}" class="text-link">Google Calendar</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="https://outlook.live.com/calendar/0/deeplink/compose?allday=false&location={{{ venueAddress1 }}} {{{ venueAddress2 }}}&enddt={{{  eventOutlookEnd  }}}%2B00%3A00&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt={{{  eventOutlookStart  }}}%2B00%3A00&subject={{{  eventName  }}}" class="text-link">Microsoft Outlook</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="https://calendar.yahoo.com/?in_loc={{{ venueAddress1 }}} {{{ venueAddress2 }}}&dur=&et={{{  startsAt  }}}&st={{{  endsAt  }}}&title={{{  eventName  }}}&v=60" class="text-link">Yahoo! Calendar</a>
+          </mj-text>
+        </mj-column>
+      </mj-group>
+       <mj-raw>
+        {{/each}}
+      </mj-raw>
+    </mj-section>

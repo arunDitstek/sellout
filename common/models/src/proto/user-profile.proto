@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+import "error.proto";
+import "common.proto";
+
+message UserProfile {
+  string _id = 0;
+  string userId = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string email = 4;
+  string phoneNumber = 5;
+  string authyId = 6;
+  string stripeCustomerId = 7;
+  string imageUrl = 8;
+  repeated Metrics metrics = 9;
+  repeated string orgIds = 10;
+  repeated string eventIds = 11;
+  repeated string venueIds = 12;
+  repeated string artistIds = 13;
+  Address address = 14;
+}
+
+/****************************************************************************************
+  Create Profile
+****************************************************************************************/
+message CreateUserProfileRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string email = 4;
+  string phoneNumber = 5;
+}
+
+message CreateUserProfileResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  UserProfile userProfile = 2;
+}
+
+
+/****************************************************************************************
+  Update Profile
+****************************************************************************************/
+message UpdateUserProfileRequest {
+  string spanContext = 0;
+  UserProfile userProfile = 1;
+  string userId = 2;
+}
+
+message UpdateUserProfileResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  UserProfile userProfile = 2;
+}
+
+/****************************************************************************************
+  Profile Report
+****************************************************************************************/
+
+message GenerateUserProfileReportRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  UserProfileQuery query = 2;
+  string userId = 3;
+}
+
+message GenerateUserProfileReportResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string url = 2;
+  string message = 3;
+}
+
+
+/****************************************************************************************
+  Find Profile
+****************************************************************************************/
+
+message UserProfileQuery {
+  repeated string eventIds = 0;
+  repeated string venueIds = 1; 
+  repeated string artistIds = 2;
+  repeated string userIds = 3;
+  string name = 4;
+  string email = 5;
+  string phoneNumber = 6;
+  bool any = 7;
+  string orgId = 8;
+}
+
+message QueryUserProfilesRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  UserProfileQuery query = 2;
+  Pagination pagination = 3;
+}
+
+message QueryUserProfilesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated UserProfile userProfiles = 2;
+}
+
+message FindUserProfileRequest {
+  string spanContext = 0;
+  string userId = 1;
+}
+
+message FindUserProfileResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  UserProfile userProfile = 2;
+}
+
+// Delete UserProfile
+message DeleteUnverifiedUserProfileRequest {
+  string spanContext = 0;
+  string userId = 1;
+}
+
+message DeleteUnverifiedUserProfileResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  bool deleted = 2;
+}
+
+service UserProfileService {
+  // Create
+  rpc createUserProfile(CreateUserProfileRequest) returns (CreateUserProfileResponse) {}
+  // Update
+  rpc updateUserProfile(UpdateUserProfileRequest) returns (UpdateUserProfileResponse) {}
+  // Report
+  rpc generateUserProfileReport(GenerateUserProfileReportRequest) returns (GenerateUserProfileReportResponse) {}
+  // Find
+  rpc findUserProfile(FindUserProfileRequest) returns (FindUserProfileResponse) {}
+  rpc queryUserProfiles(QueryUserProfilesRequest) returns (QueryUserProfilesResponse) {}
+  // Delete
+  rpc deleteUnverifiedUserProfile(DeleteUnverifiedUserProfileRequest) returns (DeleteUnverifiedUserProfileResponse) {}
+}

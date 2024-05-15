@@ -1,0 +1,173 @@
+<mj-section background-color="#ffffff" padding="0px 25px 15px 25px">
+  <mj-column width="80%">
+    <mj-text color="#333333" font-size="14px" line-height="16px" font-weight="600" padding="0" align="left">
+      Order #{{ confirmationCode }}
+    </mj-text>
+  </mj-column>
+    <mj-column width="20%">
+      <mj-text color="#333333" font-size="14px" line-height="16px" font-weight="600" padding="0" align="right">
+        <mj-raw>{{#if_eq orderType 'reservation'}}</mj-raw>
+          <mj-raw>Ticket Value</mj-raw> 
+          <mj-raw>{{/if_eq}}</mj-raw> 
+      </mj-text>
+  </mj-column>
+</mj-section>
+
+<mj-section background-color="#ffffff" padding="0px 25px 5px 25px">
+    <mj-group>
+      <mj-raw>
+        {{#each orderItems}}
+      </mj-raw>
+      <mj-column width="80%" padding="0px 0px 0px">
+        <mj-text color="#333333" font-size="14px" line-height="16px" padding="5px 0px 0px 0px" align="left" font-weight="500">
+          {{ name }}
+        </mj-text>
+        <mj-raw>
+        {{#if seats}}
+        </mj-raw>
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="5px 0px 0px 0px" align="left">
+          Seats {{ seats }}
+        </mj-text>
+        <mj-raw>
+        {{/if}}
+        </mj-raw>
+        <mj-raw>
+        {{#if days}}
+        </mj-raw>
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="5px 0px 0px 0px" align="left">
+         {{ days }}
+        </mj-text>
+        <mj-raw>
+        {{/if}}
+        </mj-raw>
+       </mj-column>
+      <mj-column width="20%" padding="0px">
+        <mj-text color="#333333" font-size="14px" line-height="16px" padding="5px 0px 0px 0px" align="right" font-weight="500">
+          <mj-raw> {{ price }}</mj-raw>
+        </mj-text>
+      </mj-column>
+       <mj-column width="100%" padding="0px">
+            <mj-text color="#333333" font-size="14px" line-height="16px" padding="5px 0px 0px 0px" align="left" font-weight="500" text-indent="20%" font-style="italic">
+              {{ description }}
+            </mj-text>
+      </mj-column>
+      <mj-raw>
+        {{/each}}
+      </mj-raw>
+    </mj-group>
+</mj-section>
+
+<mj-raw>{{#if_eq promoterFee '$0.00'}}</mj-raw>
+<mj-raw>{{else}}</mj-raw>
+  <mj-section background-color="#ffffff" padding="0px 25px">
+    <mj-group>
+      <mj-column width="50%" padding="0px">
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="0px 0px 20px 0px" align="left">
+          Promoter Fee
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0px">
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="0px 0px 20px 0px" align="right">
+          {{ promoterFee }} 
+        </mj-text>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+<mj-raw>{{/if_eq}}</mj-raw>
+
+<mj-raw>{{#if_eq discount '$0.00'}}</mj-raw>
+<mj-raw>{{else}}</mj-raw>
+  <mj-section background-color="#ffffff" padding="0px 25px">
+    <mj-group>
+      <mj-column width="50%" padding="0px">
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="0px 0px 20px 0px" align="left">
+          Discount
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0px">
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="0px 0px 20px 0px" align="right">
+          {{ discount }} 
+        </mj-text>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+<mj-raw>{{/if_eq}}</mj-raw>
+
+
+<mj-raw>{{#if_eq orderSubtotal '$0.00'}}</mj-raw>
+<mj-raw>{{else}}</mj-raw>
+  <mj-section background-color="#ffffff" padding="0px 25px">
+    <mj-group>
+      <mj-column width="50%" padding="0px">
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="10px 0px 0px 0px" align="left">
+          Subtotal
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0px">
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="10px 0px 0px 0px" align="right">
+          {{ orderSubtotal }} 
+        </mj-text>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+<mj-raw>{{/if_eq}}</mj-raw>
+
+<mj-raw>{{#if_eq orderType 'reservation'}}</mj-raw>
+<mj-raw>{{else}}</mj-raw>
+<mj-raw>{{#if_eq tax '$0.00'}}</mj-raw>
+
+<mj-raw>{{else}}</mj-raw>
+  <mj-section background-color="#ffffff" padding="0px 25px">
+    <mj-group>
+      <mj-column width="50%" padding="0px">
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="5px 0px 0px 0px" align="left">
+          Sales Tax
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0px">
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="5px 0px 0px 0px" align="right">
+          {{ tax }}
+        </mj-text>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+<mj-raw>{{/if_eq}}</mj-raw>
+<mj-raw>{{/if_eq}}</mj-raw>
+
+<mj-raw>{{#if_eq processingFee '$0.00'}}</mj-raw>
+<mj-raw>{{else}}</mj-raw>
+  <mj-section background-color="#ffffff" padding="0px 25px">
+    <mj-group>
+      <mj-column width="50%" padding="0px">
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="10px 0px 0px 0px" align="left">
+          Processing Fee
+        </mj-text>
+      </mj-column>
+      <mj-column width="50%" padding="0px">
+        <mj-text color="#333333" font-size="12px" line-height="14px" padding="10px 0px 0px 0px" align="right">
+          {{ processingFee }} 
+        </mj-text>
+      </mj-column>
+    </mj-group>
+  </mj-section>
+<mj-raw>{{/if_eq}}</mj-raw>
+
+<mj-raw>{{#if_eq orderTotal '$0.00'}}</mj-raw>
+<mj-raw>{{else}}</mj-raw>
+<mj-section background-color="#ffffff" padding="0px 25px">
+  <mj-group>
+    <mj-column width="50%" padding="0px">
+      <mj-text color="#333333" font-size="14px" line-height="16px" font-weight="600" padding="10px 0px 0px 0px" align="left">
+        Total
+      </mj-text>
+    </mj-column>
+    <mj-column width="50%" padding="0px">
+      <mj-text color="#333333" font-size="14px" line-height="16px" font-weight="600" padding="10px 0px 0px 0px" align="right">
+        {{ orderTotal }}
+      </mj-text>
+    </mj-column>
+  </mj-group>
+</mj-section>
+<mj-raw>{{/if_eq}}</mj-raw>
+
+<mj-include path="./content-divider.mjml" />

@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+import "error.proto";
+import "common.proto";
+
+/****************************************************************************************
+  Task Models
+****************************************************************************************/
+message Subscription {
+  string _id = 1;
+  string email = 2;
+  string frequency = 3;
+}
+
+message Task {
+  string _id = 0;
+  string taskType = 1;
+  int32 createdAt = 2;
+  int32 executeAt = 3;
+  int32 startedAt = 4;
+  int32 endedAt = 5;
+  bool success = 6;
+  string userId = 7;
+  string orgId = 8;
+  string eventId = 9;
+  string orderId = 10;
+  repeated string venueIds = 11;
+  repeated string artistIds = 12;
+  Subscription subscription = 13;
+  string email = 14;
+}
+
+message DeleteTaskRequest{
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+  string subscriptionId = 3;
+  int32 startedAt = 4;
+}
+
+message DeleteTaskResponse{
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Task task = 2;
+}
+
+message CreateTaskRequest {
+  string spanContext = 0;
+  repeated Task task = 1;
+}
+
+message CreateTaskResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+service TaskService {
+  // Create
+  rpc createTask(CreateTaskRequest) returns (CreateTaskResponse) {}
+  rpc deleteTask(DeleteTaskRequest) returns (DeleteTaskResponse) {}
+
+}

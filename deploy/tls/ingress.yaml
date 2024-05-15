@@ -1,0 +1,42 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata: 
+  name: sellout-nginx-ingress
+  annotations: 
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/issuer: "letsencrypt-prod"
+    certmanager.k8s.io/acme-challenge-type: http01
+spec: 
+  tls:
+  - secretName: sellout-tls-cert
+    hosts:
+      - app.sellout.cool
+      - embed.sellout.cool
+      - graphql.sellout.cool
+  rules: 
+    - host: app.sellout.cool
+      http: 
+        paths: 
+          - 
+            backend: 
+              serviceName: sellout-admin-ui-admin-ui
+              servicePort: 80
+            path: /
+    - host: embed.sellout.cool
+      http: 
+        paths: 
+          - 
+            backend: 
+              serviceName: sellout-checkout-modal-sellout-checkout-modal
+              servicePort: 80
+            path: /
+    - host: graphql.sellout.cool
+      http: 
+        paths: 
+          - 
+            backend: 
+              serviceName: sellout-graphql
+              servicePort: 80
+            path: /
+
+  

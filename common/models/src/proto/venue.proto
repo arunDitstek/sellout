@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+import "error.proto";
+import "common.proto";
+
+
+message Venue {
+  string _id = 0;
+  string orgId = 1;
+  string name = 2;
+  string description = 3;
+  int32 capacity = 4;
+  string url = 5;
+  repeated string imageUrls = 6;
+  string venueGlobalId = 7;
+  Address address = 8;
+  float tax = 9;
+}
+
+// Create Venue
+message CreateVenueRequest {
+  string spanContext = 0;
+  Venue venue = 1;
+  string orgId = 2;
+}
+
+message CreateVenueResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  Venue venue = 3;
+}
+
+// Update Venue
+message UpdateVenueRequest {
+  string spanContext = 1;
+  Venue venue = 2;
+  string orgId = 3;
+}
+
+message UpdateVenueResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  Venue venue = 3;
+}
+
+/****************************************************************************************
+  Find Venue
+****************************************************************************************/
+
+message VenueQuery {
+  string name = 0;
+  repeated string venueIds = 1;
+  bool any = 2;
+}
+
+message QueryVenuesRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  VenueQuery query = 2;
+  Pagination pagination = 3;
+}
+
+message QueryVenuesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Venue venues = 2;
+}
+
+// Find Venue
+message FindVenueByIdRequest {
+  string spanContext = 0;
+  string venueId = 1;
+}
+
+message FindVenueByIdResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Venue venue = 2;
+}
+
+
+// List Venue
+message ListPromoterVenuesRequest {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+message ListPromoterVenuesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Venue venues = 2;
+}
+
+message QueryGlobalVenuesRequest {
+  string spanContext = 0;
+  repeated Query query = 1;
+  Pagination pagination = 2; 
+}
+
+message QueryGlobalVenuesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Venue venues = 2;
+}
+
+service VenueService {
+  // Create
+  rpc createVenue(CreateVenueRequest) returns (CreateVenueResponse) {}
+  // Update
+  rpc updateVenue(UpdateVenueRequest) returns (UpdateVenueResponse) {}
+  // Find
+  rpc findVenueById(FindVenueByIdRequest) returns (FindVenueByIdResponse) {}  
+  // Query
+  rpc queryVenues(QueryVenuesRequest) returns (QueryVenuesResponse) {}
+  // List
+  rpc listPromoterVenues(ListPromoterVenuesRequest) returns (ListPromoterVenuesResponse) {}
+  rpc queryGlobalVenues(QueryGlobalVenuesRequest) returns (QueryGlobalVenuesResponse) {}
+}

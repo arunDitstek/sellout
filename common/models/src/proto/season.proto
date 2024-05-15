@@ -1,0 +1,198 @@
+syntax = "proto3";
+import "error.proto";
+import "common.proto";
+import "organization.proto";
+import "venue.proto";
+
+
+message CreateSeasonRequest {
+    string spanContext = 0;
+    string orgId = 1;
+    Season season = 2;
+  }
+  
+  message CreateSeasonResponse {
+    StatusCode status = 0;
+    repeated Error errors = 1;
+    Season season = 2;
+  }
+
+  message UpdateSeasonRequest {
+    string spanContext = 0;
+    string orgId = 1;
+    Season season = 2;
+  }
+  
+  message UpdateSeasonResponse {
+    StatusCode status = 0;
+    repeated Error errors = 1;
+    Season season = 2;
+  }
+
+  // Find Event By Id
+message FindSeasonByIdRequest {
+  string spanContext = 0;
+  string seasonId = 1;
+}
+
+message FindSeasonByIdResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Season season = 2;
+}
+message FindSeasonDetailsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Season season = 2;
+
+}
+
+  message Season {
+    string _id = 1;
+    string orgId = 2;
+    string type = 3;
+    string name = 4;
+    string subtitle = 5;
+    string description = 6;
+    string posterImageUrl = 7;
+    string venueId = 8;
+    int32 createdAt = 9;
+    bool publishable = 10;
+    string seatingChartKey = 11;
+    string age = 12;
+    bool active = 13;
+    string userAgreement = 14;
+    string processAs = 15;
+    string sendQRCode = 16;
+    Address location  = 17;
+    SeasonSchedule schedule = 18;
+    repeated Performance performances = 19;
+    repeated TicketType ticketTypes = 20;
+    repeated TicketHold holds = 21;
+    repeated EventUpgrade upgrades = 22;
+    repeated EventPromotion promotions = 23;
+    repeated EventCustomFields customFields = 24;
+    TicketExchange exchange = 25;
+    Metrics metrics = 26; 
+    bool published = 27;
+    bool salesBeginImmediately = 28;
+    bool cancel = 29;
+    bool taxDeduction = 30;
+    int32 numberOfEvent = 31;
+    repeated string eventIds= 32;
+    bool isGuestTicketSale = 33;
+  }
+
+  message SeasonSchedule {
+    int32 announceAt = 0;
+    int32 ticketsAt = 1;
+    int32 ticketsEndAt = 2;
+    int32 startsAt = 3;
+    int32 endsAt = 4;
+  }
+
+ 
+
+
+  message PublishSeasonRequest {
+    string spanContext = 0;
+    string orgId = 1;
+    string seasonId = 2;
+    bool published = 3;
+  }
+  
+  message PublishSeasonResponse {
+    StatusCode status = 0;
+    repeated Error errors = 1;
+    Season season = 2;
+  }
+
+  message QuerySeasonsRequest {
+    string spanContext = 0;
+    string orgId = 1;
+    SeasonQuery query = 2;
+    Pagination pagination = 3;
+  }
+  
+  message QuerySeasonsResponse {
+    StatusCode status = 0;
+    repeated Error errors = 1;
+    repeated Season seasons = 2;
+  }
+//
+  message QuerySeasonsListRequest {
+    string spanContext = 0;
+    string orgId = 1;
+  }
+  
+  message QuerySeasonsListResponse {
+    StatusCode status = 0;
+    repeated Error errors = 1;
+    repeated Season seasons = 2;
+  }
+
+/****************************************************************************************
+  Find Event
+****************************************************************************************/
+
+message SeasonQuery {
+  string name = 0;
+  repeated string seasonIds = 1;
+  repeated string venueIds = 2; 
+  repeated string artistIds = 3;
+  repeated string userIds = 4; 
+  int32 startDate = 5;
+  int32 endDate = 6;
+  string sortBy = 7;
+  int32 orderBy = 8;
+  bool published = 9;
+  bool any = 10;
+  bool cancel = 11;
+  repeated string eventIds = 12;
+}
+
+message SeasonTicketsRequest {
+  string spanContext = 0;
+  string seasonId = 1;
+  string promoCode = 2;
+}
+
+message SeasonTickets {
+  string promoType = 0; 
+  int32 remainingQty = 2;
+  bool active = 3;
+  int32 startsAt = 4;
+  int32 endsAt = 5;
+  repeated TicketType seasonTickets = 1;
+}
+
+message SeasonTicketsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated SeasonTickets tickets = 2;
+}
+
+
+  service SeasonService {
+    // Create
+    rpc createSeason(CreateSeasonRequest) returns (CreateSeasonResponse) {}
+     // Update
+    rpc updateSeason(UpdateSeasonRequest) returns (UpdateSeasonResponse) {} 
+     // Publish
+    rpc publishSeason(PublishSeasonRequest) returns (PublishSeasonResponse) {}
+     // Get Season
+    rpc findSeasonById(FindSeasonByIdRequest) returns (FindSeasonByIdResponse) {}
+     // Query
+    rpc querySeasons(QuerySeasonsRequest) returns (QuerySeasonsResponse) {}
+    // Tickets
+    rpc seasonTickets(SeasonTicketsRequest) returns (SeasonTicketsResponse) {}
+    // QueryList
+    rpc querySeasonsList(QuerySeasonsListRequest) returns (QuerySeasonsListResponse) {}
+    //
+    rpc findSeasonDetails(FindSeasonByIdRequest) returns (FindSeasonDetailsResponse) {}  
+
+
+
+    
+
+  }

@@ -1,0 +1,40 @@
+<mj-section background-color="#ffffff" padding="20px 25px 0px 25px" vertical-align="middle">
+  <mj-column padding="0px" vertical-align="middle" width="30%" css-class="mobile-image">
+    <mj-image
+      align="left"
+      src="{{{ eventPosterImageUrl }}}"
+      padding="0px"
+      border-radius="5px"
+    />
+  </mj-column>
+  <mj-column vertical-align="middle" padding="0px 0px 0px 15px" width="70%" css-class="mobile-image-text">
+      <mj-text
+        color="#333333"
+        font-size="18px"
+        line-height="21px"
+        font-weight="500"
+        padding="3px 0px 3px 0px"
+      >
+        {{ eventName }}
+      </mj-text>
+    <mj-text
+      color="#4F4F4F"
+      font-size="14px"
+      line-height="16px"
+      padding="0px 0px 3px 0px"
+    >
+      {{ eventSubtitle }}
+    </mj-text>
+    <mj-text
+      color="#333333"
+      font-size="14px"
+      line-height="16px"
+      padding="0px 0px 0px 0px"
+    >
+      {{ venueName }} | {{ cityState }}
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-include path="./content-divider.mjml" />
+
+<!-- "https://via.placeholder.com/150" -->

@@ -1,0 +1,20 @@
+<mj-section background-color="#ffffff" padding="0px 25px" vertical-align="middle">
+  <mj-column vertical-align="middle" width="100%" padding="0px" css-class="mobile-image">
+    <mj-text color="#333333" font-size="14px" line-height="20px" font-weight="600" padding-left="0px" padding-top="0px" padding-bottom="0px">
+      Add to Calendar
+    </mj-text>
+  </mj-column>
+  <mj-column vertical-align="middle" width="100%"  padding="0" css-class="mobile-image-text">
+    <mj-text color="#FF6802" font-size="14px" line-height="16px" padding-left="0px" padding-top="10px" padding-bottom="0px">
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates={{{  eventStart  }}}%2F{{{  eventEnd  }}}&location={{{ venueAddress1 }}} {{{ venueAddress2 }}}&text={{{  eventName  }}}" class="text-link">Google Calendar</a>
+     &nbsp;&nbsp;|&nbsp;&nbsp;
+     <a href="https://outlook.live.com/calendar/0/deeplink/compose?allday=false&location={{{ venueAddress1 }}} {{{ venueAddress2 }}}&enddt={{{  eventOutlookEnd  }}}%2B00%3A00&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt={{{  eventOutlookStart  }}}%2B00%3A00&subject={{{  eventName  }}}" class="text-link">Microsoft Outlook</a>
+     &nbsp;&nbsp;|&nbsp;&nbsp;
+     <a href="https://calendar.yahoo.com/?in_loc={{{ venueAddress1 }}} {{{ venueAddress2 }}}&dur=&et={{{  eventEnd  }}}&st={{{  eventStart  }}}&title={{{  eventName  }}}&v=60" class="text-link">Yahoo! Calendar</a>
+    </mj-text>
+  </mj-column>
+</mj-section>
+
+<mj-include path="./content-divider.mjml" />
+
+<!-- "https://via.placeholder.com/150" -->

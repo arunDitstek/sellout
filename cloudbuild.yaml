@@ -1,0 +1,212 @@
+timeout: 7200s
+options:
+  machineType: 'N1_HIGHCPU_8'
+
+steps:
+
+  ####################################################################
+  # Build all the containers
+  ####################################################################
+
+  # # User
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./user/Dockerfile", "--destination=gcr.io/$PROJECT_ID/user:$SHORT_SHA", "--context=dir://./user", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # User Profile
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./user-profile/Dockerfile", "--destination=gcr.io/$PROJECT_ID/user-profile:$SHORT_SHA", "--context=dir://./user-profile", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # User Profile
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./organization/Dockerfile", "--destination=gcr.io/$PROJECT_ID/organization:$SHORT_SHA", "--context=dir://./organization", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Role
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./role/Dockerfile", "--destination=gcr.io/$PROJECT_ID/role:$SHORT_SHA", "--context=dir://./role", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # GraphQL
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./graphql/Dockerfile", "--destination=gcr.io/$PROJECT_ID/graphql:$SHORT_SHA", "--context=dir://./graphql", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Stripe
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./stripe/Dockerfile", "--destination=gcr.io/$PROJECT_ID/stripe:$SHORT_SHA", "--context=dir://./stripe", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Email
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./email/Dockerfile", "--destination=gcr.io/$PROJECT_ID/email:$SHORT_SHA", "--context=dir://./email", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+  # # Event
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./event/Dockerfile", "--destination=gcr.io/$PROJECT_ID/event:$SHORT_SHA", "--context=dir://./event", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+  # # Season
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./season/Dockerfile", "--destination=gcr.io/$PROJECT_ID/season:$SHORT_SHA", "--context=dir://./season", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Venue
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./venue/Dockerfile", "--destination=gcr.io/$PROJECT_ID/venue:$SHORT_SHA", "--context=dir://./venue", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Artist
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./artist/Dockerfile", "--destination=gcr.io/$PROJECT_ID/artist:$SHORT_SHA", "--context=dir://./artist", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Order
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./order/Dockerfile", "--destination=gcr.io/$PROJECT_ID/order:$SHORT_SHA", "--context=dir://./order", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # File Upload
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./file-upload/Dockerfile", "--destination=gcr.io/$PROJECT_ID/file-upload:$SHORT_SHA", "--context=dir://./file-upload", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Task Queue
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./task-queue/Dockerfile", "--destination=gcr.io/$PROJECT_ID/task-queue:$SHORT_SHA", "--context=dir://./task-queue", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Web Flow
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./web-flow/Dockerfile", "--destination=gcr.io/$PROJECT_ID/web-flow:$SHORT_SHA", "--context=dir://./web-flow", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Fee
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./fee/Dockerfile", "--destination=gcr.io/$PROJECT_ID/fee:$SHORT_SHA", "--context=dir://./fee", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Seating
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./seating/Dockerfile", "--destination=gcr.io/$PROJECT_ID/seating:$SHORT_SHA", "--context=dir://./seating", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Plivo
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./plivo/Dockerfile", "--destination=gcr.io/$PROJECT_ID/plivo:$SHORT_SHA", "--context=dir://./plivo", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Backstage
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./backstage/Dockerfile", "--destination=gcr.io/$PROJECT_ID/backstage:$SHORT_SHA", "--context=dir://./backstage", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN", "--build-arg=FONTAWESOME_NPM_AUTH_TOKEN=$_FONTAWESOME_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+
+  # # Purchase Portal
+  # - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+  #   args: ["--dockerfile=./purchase-portal/Dockerfile", "--destination=gcr.io/$PROJECT_ID/purchase-portal:$SHORT_SHA", "--context=dir://./purchase-portal", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN", "--build-arg=FONTAWESOME_NPM_AUTH_TOKEN=$_FONTAWESOME_NPM_AUTH_TOKEN"]
+  #   waitFor: ['-'] # This step will run immediately
+
+  # Purchase Portal
+   - name: 'gcr.io/kaniko-project/executor:v0.16.0'
+     args: ["--dockerfile=./website/Dockerfile", "--destination=gcr.io/$PROJECT_ID/website:$SHORT_SHA", "--context=dir://./website/", "--build-arg=SELLOUT_NPM_AUTH_TOKEN=$_SELLOUT_NPM_AUTH_TOKEN", "--build-arg=FONTAWESOME_NPM_AUTH_TOKEN=$_FONTAWESOME_NPM_AUTH_TOKEN"]
+     waitFor: ['-'] # This step will run immediately
+
+  ####################################################################
+  # The following steps update the Ops repository with the image tag
+  ####################################################################
+
+  ## Decrypt the file containing the key
+  #- name: 'gcr.io/cloud-builders/gcloud'
+  #  args:
+  #  - kms
+  #  - decrypt
+  #  - --ciphertext-file=tools/deploy/id_rsa.enc
+  #  - --plaintext-file=/root/.ssh/id_rsa
+  #  - --location=global
+  #  - --keyring=deployment
+  #  - --key=github-key
+  #  volumes:
+  #  - name: 'ssh'
+  #    path: /root/.ssh
+
+  ## Set up git with key and domain.
+  #- name: 'gcr.io/cloud-builders/git'
+  #  entrypoint: 'bash'
+  #  args:
+  #  - '-c'
+  #  - |
+  #    apt-get -y update
+  #    apt install -y jq
+  #    chmod 600 /root/.ssh/id_rsa
+  #    cat <<EOF >/root/.ssh/config
+  #    Hostname github.com
+  #    IdentityFile /root/.ssh/id_rsa
+  #    EOF
+  #    mv tools/deploy/known_hosts /root/.ssh/known_hosts
+  #    cat /root/.ssh/known_hosts
+  #    ssh-keygen -f "/root/.ssh/known_hosts" -R "github.com"
+  #    curl -L https://api.github.com/meta | jq -r '.ssh_keys | .[]' | sed -e 's/^/github.com /' >> /root/.ssh/known_hosts
+  #    git config --global user.email "deploy@sellout.io"
+  #    git config --global user.name "Deployment Task"
+  #    git clone git@github.com:sellout-tickets/SelloutOps.git /src/ops
+  #    ls -a
+  #    cd /src/ops
+  #    # git checkout development
+  #    git checkout $_DEPLOYMENT_BRANCH_NAME
+  #  volumes:
+  #  - name: 'ssh'
+  #    path: /root/.ssh
+  #  - name: 'ops'
+  #    path: /src/ops
+
+  ## Install Node.js prerequisites and run update script against image-tags.yaml
+  #- name: 'node:10.15.1'
+  #  dir: /root
+  #  entrypoint: bash
+  #  args:
+  #  - '-c'
+  #  - |
+  #    npm install js-yaml
+  #    cp /src/ops/tools/deploy/update_tags.js .
+  #    node update_tags.js '/src/ops/charts/sellout/values/image-tags.yaml' $SHORT_SHA
+  #    cat '/src/ops/charts/sellout/values/image-tags.yaml'
+  #  volumes:
+  #  - name: 'ssh'
+  #    path: /root/.ssh
+  #  - name: 'ops'
+  #    path: /src/ops
+
+  ## Add, commit, and push changes
+  #- name: 'gcr.io/cloud-builders/git'
+  #  dir: /src/ops
+  #  entrypoint: 'bash'
+  #  args:
+  #  - '-c'
+  #  - |
+  #    git add -A
+  #    git commit -m "Update image-tags.yaml"
+  #    git push
+  #  volumes:
+  #  - name: 'ssh'
+  #    path: /root/.ssh
+  #  - name: 'ops'
+  #    path: /src/ops

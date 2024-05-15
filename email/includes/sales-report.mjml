@@ -1,0 +1,84 @@
+<mjml>
+  <mj-body >
+    <mj-section >
+      <mj-column>
+        <mj-table>
+          <tr style="text-align:left;">
+            <th style="padding: 0 15px 0 0; color:gray; ">EVENT</th>
+            <th style="padding: 0 15px 0 0; color:gray;">DATE</th>
+            <th style="padding: 0 15px 0 0; color:gray;">VENUE</th>
+            <th style="padding: 0 15px 0 0; color:gray;">ORGANIZER</th>
+          </tr>
+           <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
+            <th style="padding: 0 15px 0 0;">MULTIPLE EVENT</th>
+            <th style="padding: 0 15px; ">Sun, Jan 15th at 8:00pm - Mon, Jan 16th at 11:00pm</th>
+            <th style="padding: 0 0 0 15px; ">Test Secret Code</th>
+            <th style="padding: 0 0 0 15px; ">Sell Out Yogesh</th>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+    <mj-section >
+      <mj-column>
+        <mj-table>
+          <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
+            <th style="padding: 0 15px 0 0;">TICKETS</th>
+            <th style="padding: 0 15px; color:gray;">QTY SOLD</th>
+            <th style="padding: 0 0 0 15px; color:gray;">QTY REFUNDS</th>
+            <th style="padding: 0 0 0 15px; color:gray;">QTY COMPS</th>
+            <th style="padding: 0 0 0 15px; color:gray;">QTY NET</th>
+            <th style="padding: 0 0 0 15px; color:gray;">GROSS SALES</th>
+            <th style="padding: 0 0 0 15px; color:gray;">REFUNDS</th>
+            <th style="padding: 0 0 0 15px; color:gray;">NET SALES</th>
+          </tr>
+          <tr>
+            <td style="padding: 0 15px 0 0;">T1</td>
+            <td style="padding: 0 15px;">PHP</td>
+            <td style="padding: 0 0 0 15px;">C, Shell Unix</td>
+          </tr>
+          <tr>
+            <td style="padding: 0 15px 0 0;">T2</td>
+            <td style="padding: 0 15px;">JavaScript</td>
+            <td style="padding: 0 0 0 15px;">Scheme, Self</td>
+          </tr>
+          <tr>
+            <td style="padding: 0 15px 0 0;">Ticket Summary</td>
+            <td style="padding: 0 15px;">JavaScript</td>
+            <td style="padding: 0 0 0 15px;">Scheme, Self</td>
+          </tr>
+          <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
+            <th style="padding: 0 15px 0 0;">UPGRADES</th>
+            <th style="padding: 0 15px; color:gray;">QTY SOLD</th>
+            <th style="padding: 0 0 0 15px; color:gray;">QTY REFUNDS</th>
+            <th style="padding: 0 0 0 15px; color:gray;">QTY COMPS</th>
+            <th style="padding: 0 0 0 15px; color:gray;">QTY NET</th>
+            <th style="padding: 0 0 0 15px; color:gray;">GROSS SALES</th>
+            <th style="padding: 0 0 0 15px; color:gray;">REFUNDS</th>
+            <th style="padding: 0 0 0 15px; color:gray;">NET SALES</th>
+          </tr>
+          <tr>
+            <th style="padding: 0 15px 0 0;">Upgrade Summary</th>
+            <td style="padding: 0 15px;">0</td>
+            <td style="padding: 0 15px;">0</td>
+            <td style="padding: 0 15px;">0</td>
+            <td style="padding: 0 15px;">0</td>
+            <td style="padding: 0 15px;">0</td>
+            <td style="padding: 0 15px;">0</td>
+            <td style="padding: 0 15px;">0</td>
+          </tr>
+          <tr>
+            <th style="padding: 0 15px 0 0;">TOTAL SALES</th>
+            <th style="padding: 0 15px;"></th>
+            <th style="padding: 0 0 0 15px;"></th>
+            <th style="padding: 0 0 0 15px;"></th>
+            <th style="padding: 0 0 0 15px;"></th>
+            <th style="padding: 0 0 0 15px; color:gray;">GROSS SALES</th>
+            <th style="padding: 0 0 0 15px; color:gray;">REFUNDS</th>
+            <th style="padding: 0 0 0 15px; color:gray;">NET SALES</th>
+
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

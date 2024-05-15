@@ -1,0 +1,22 @@
+<mjml>
+  <mj-include path="../includes/head.mjml"></mj-include>
+  <mj-body background-color="#F9F9F9" width="600px">
+    <mj-include path="../includes/top-bar.mjml"></mj-include>
+    <mj-wrapper padding-top="0" padding-bottom="0px" css-class="body-section">
+      <mj-include path="../includes/event-preview-side.mjml"></mj-include>
+      <mj-section background-color="#ffffff" padding-top="0px" padding-bottom="0px">
+        <mj-column width="100%">
+          <mj-text align="center" color="#333333" font-weight="600" font-size="24px" line-height="28px" padding-top="0px" padding-bottom="0px">{{ firstName }}, you've got tickets.</mj-text>
+          <mj-text align="center" color="#333333" font-size="14px" line-height="20px" padding-bottom="0px">Your {{ orderType }} for {{ eventName }} has been confirmed.</mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-include path="../includes/content-divider.mjml"></mj-include>
+      <mj-include path="../includes/order-delivery-notice.mjml"></mj-include>
+      <mj-include path="../includes/order-summary.mjml"></mj-include>
+      <mj-include path="../includes/venue-location.mjml"></mj-include>
+      <mj-include path="../includes/add-multiple-day-calender.mjml"/>
+      <mj-include path="../includes/customer-support.mjml"></mj-include>
+    </mj-wrapper>
+    <mj-include path="../includes/sellout-info.mjml"></mj-include>
+  </mj-body>
+</mjml>

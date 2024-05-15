@@ -1,0 +1,23 @@
+<mj-section background-color="#ffffff" padding="0px">
+  <mj-column width="100%">
+    <mj-text color="#333333"
+      font-size="14px"
+      line-height="16px"
+      font-weight="600"
+      padding-bottom="5px"
+      padding-top="0"
+      >
+        Customer Support
+      </mj-text>
+    <mj-text
+      color="#FF6802"
+      font-size="14px"
+      line-height="16px"
+      font-weight="400"
+      padding-bottom="25px"
+      padding-top="10px"
+      >
+        <a href="http://help.sellout.io/en/" class="text-link">Visit Help Center</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="mailto:hello@sellout.io" class="text-link">Contact Sellout</a></mj-text>
+  </mj-column>
+</mj-section>

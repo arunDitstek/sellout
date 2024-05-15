@@ -1,0 +1,23 @@
+<mj-section background-color="#ffffff" padding="0">
+  <mj-column padding-left="0">
+   
+      <mj-raw>
+        {{#each dayIdsTime}}
+      </mj-raw>
+      <mj-text color="#E63946" font-weight="600" font-size="12px" line-height="14px" padding-top="0" padding-bottom="5px" text-transform="uppercase">
+        {{ eventDate }} | Doors {{ doorsAt }} | Show {{ showAt }}
+      </mj-text>
+     <mj-raw>
+        {{/each}}
+      </mj-raw>
+   
+    <mj-text color="#333333" font-weight="500" font-size="18px" line-height="21px"  padding-top="0" padding-bottom="5px">
+      {{ eventName }}
+    </mj-text>
+    <mj-text color="#333333" font-weight="400" font-size="14px" line-height="16px" padding-top="0" padding-bottom="0px">
+      {{ venueName }} | {{ cityState }}
+    </mj-text>
+  </mj-column>
+</mj-section>
+
+<mj-include path="./content-divider.mjml" />

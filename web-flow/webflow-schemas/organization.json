@@ -1,0 +1,168 @@
+{
+  "_id": "5d88f46ec5599e364cb23c8a",
+  "lastUpdated": "2019-09-23T16:35:58.818Z",
+  "createdOn": "2019-07-18T21:07:17.691Z",
+  "name": "Organizations",
+  "slug": "organizations",
+  "singularName": "Organization",
+  "fields": [{
+    "name": "Website URL",
+    "slug": "website-url",
+    "type": "Link",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "8cf00cd8028af9891f26c2da9fd02d7a"
+  }, {
+    "name": "Logo",
+    "slug": "logo",
+    "type": "ImageRef",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "e9b7c8853afc725be9addca87454198e"
+  }, {
+    "name": "Bio",
+    "slug": "bio",
+    "type": "RichText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "a1c6634b7a4cef9a10601e8d419d69ff"
+  }, {
+    "name": "Plain Text Bio",
+    "slug": "plain-text-bio",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "27c840fc79b79436a05b022293aede5e",
+    "validations": {
+      "singleLine": false
+    }
+  }, {
+    "name": "Phone Number",
+    "slug": "phone-number",
+    "type": "Phone",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "ff7012623595ed68eb92f79dba03e618"
+  }, {
+    "name": "Support Email",
+    "slug": "support-email",
+    "type": "Email",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "36c90c9945bee99e11f1f714205b1a78"
+  }, {
+    "name": "Brand Color",
+    "slug": "brand-color",
+    "type": "Color",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "84d2bb678333315c1bb4543602214d9c"
+  }, {
+    "name": "Sellout ID",
+    "slug": "sellout-id",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "a2ad7107d80c0a040271b3d0d65bac82",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Name",
+    "slug": "name",
+    "type": "PlainText",
+    "required": true,
+    "editable": true,
+    "id": "379cbd6e67f31fdfac0779547ec34a1d",
+    "validations": {
+      "maxLength": 256
+    }
+  }, {
+    "name": "Slug",
+    "slug": "slug",
+    "type": "PlainText",
+    "required": true,
+    "editable": true,
+    "unique": true,
+    "id": "bfa977e17bd03beccf7e5231a4ddc0fa",
+    "validations": {
+      "maxLength": 256,
+      "messages": {
+        "pattern": "Must be alphanumerical and not contain any spaces or special characters",
+        "maxLength": "Must be less than 256 characters"
+      }
+    }
+  }, {
+    "name": "Archived",
+    "slug": "_archived",
+    "type": "Bool",
+    "required": true,
+    "editable": true,
+    "id": "82369885b7cec42a64fe4723e83d0d17",
+    "default": false
+  }, {
+    "name": "Draft",
+    "slug": "_draft",
+    "type": "Bool",
+    "required": true,
+    "editable": true,
+    "id": "1cdef086850437c4d2fbd4da980c8d06",
+    "default": false
+  }, {
+    "name": "Created On",
+    "slug": "created-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "36406c2ea55df3f34a7eb4c2ddfa912b"
+  }, {
+    "name": "Updated On",
+    "slug": "updated-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "4afed7d6475b114f732662602cd90d66"
+  }, {
+    "name": "Published On",
+    "slug": "published-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "2eafcd1bf32e2355ea6c3be6ff456f08"
+  }, {
+    "name": "Created By",
+    "slug": "created-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "3dd5ad4ef3553a8b10489a87b5ee03f9"
+  }, {
+    "name": "Updated By",
+    "slug": "updated-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "8ab9bf7931d4f171fe0af70a1c135af1"
+  }, {
+    "name": "Published By",
+    "slug": "published-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "43ae76dd7e37cd0eaa236cc023e17acf"
+  }],
+  "_meta": {
+    "rateLimit": {
+      "limit": 60,
+      "remaining": 45
+    }
+  }
+}

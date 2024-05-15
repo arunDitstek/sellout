@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+message Address {
+  string address1 = 1;
+  string address2 = 2;
+  string city = 3;
+  string state = 4;
+  string zip = 5;
+  string country = 6;
+  string phone = 7;
+  double lat = 8;
+  double lng = 9;
+  string placeId = 10;
+  string placeName = 11;
+  string timezone = 12;
+}
+
+message Query {
+  string key = 1;
+  string value = 2;
+}
+
+message Pagination {
+  int32 pageSize = 1;
+  int32 pageNumber = 2;
+}
+
+message Metrics {
+  string _id = 1;
+  string orgId  = 2;
+  int32 createdAt = 3;
+  // Value
+  int32 lifeTimeValue = 4;
+  int32 yearToDateValue = 5;
+  int32 lifeTimeValueRefunded = 6;
+  int32 yearToDateValueRefunded = 7;
+  int32 lifeTimeValueComped = 8;
+  int32 yearToDateValueComped = 9;
+  // Tickets
+  int32 lifeTimeTicketsPurchased = 10;
+  int32 yearToDateTicketsPurchased = 11;
+  int32 lifeTimeTicketsRefunded = 12;
+  int32 yearToDateTicketsRefunded = 13;
+  int32 lifeTimeTicketsComped = 14;
+  int32 yearToDateTicketsComped = 15;
+  // Upgrades
+  int32 lifeTimeUpgradesPurchased = 16;
+  int32 yearToDateUpgradesPurchased = 17;
+  int32 lifeTimeUpgradesRefunded = 18;
+  int32 yearToDateUpgradesRefunded = 19;
+  int32 lifeTimeUpgradesComped = 20;
+  int32 yearToDateUpgradesComped = 21;
+  // Orders
+  int32 lifeTimeOrdersPurchased = 22;
+  int32 yearToDateOrdersPurchased = 23;
+  int32 lifeTimeOrdersRefunded = 24;
+  int32 yearToDateOrdersRefunded = 25;
+  int32 lifeTimeOrdersComped = 26;
+  int32 yearToDateOrdersComped = 27;
+  repeated string eventIds = 28;
+}
+
+message Coordinates {
+  double x = 0;
+  double y = 1;
+}
+
+message Analytics {
+  string label = 0;
+  string interval = 1;
+  repeated string intervalOptions = 2;
+  repeated Coordinates coordinates = 3;
+  repeated Analytics segments = 4;
+  string type = 5;
+  double totalValue = 6;
+}

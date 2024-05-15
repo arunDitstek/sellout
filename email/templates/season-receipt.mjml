@@ -1,0 +1,27 @@
+<mjml>
+  <mj-include path="../includes/head.mjml"></mj-include>
+  <mj-body background-color="#F9F9F9" width="600px">
+    <mj-include path="../includes/top-bar.mjml"></mj-include>
+    <mj-wrapper padding-top="0" padding-bottom="0" css-class="body-section">
+      <mj-include path="../includes/season-preview-side.mjml"></mj-include>
+      <mj-section background-color="#ffffff" padding-top="0px" padding-bottom="0px">
+        <mj-column width="100%">
+          <mj-text align="center" color="#333333" font-weight="600" font-size="24px" line-height="28px" padding-top="0px" padding-bottom="0px">{{ firstName }}, your tickets are confirmed.</mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" padding="0px 25px">
+        <mj-column>
+          <mj-text color="#333333" font-size="16px" line-height="140%" padding="20px" align="center">
+           Congratulations! Your season ticket order has been confirmed successfully. Details for each event in the season are listed below. Your tickets for each event will be available at Will Call.
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-include path="../includes/content-divider.mjml" />
+      <mj-include path="../includes/order-summary.mjml"/>
+      <mj-include path="../includes/venue-location.mjml"/>
+      <mj-include path="../includes/multiple-event.mjml"/>
+      <mj-include path="../includes/customer-support.mjml"/>
+    </mj-wrapper>
+    <mj-include path="../includes/sellout-info.mjml"/>
+  </mj-body>
+</mjml>

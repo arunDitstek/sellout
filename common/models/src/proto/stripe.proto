@@ -1,0 +1,411 @@
+syntax = "proto3";
+
+import "error.proto";
+
+/***************************************************************************************
+  Stripe Models
+****************************************************************************************/
+
+message StripeConnectAccount {
+  string name = 0;
+  string country = 1;
+  string email = 2;
+  bool payoutsEnabled = 3;
+  string stripeAccountId = 4;
+}
+
+message StripeCharge {
+  string brand = 0;
+  string last4 = 1;
+}
+
+message StripeCustomer {
+  string stripeCustomerId = 0;
+  string email = 1;
+  repeated StripePaymentMethod paymentMethods = 2;
+}
+
+message StripeSource {
+  string sourceId = 0;
+  string brand = 1;
+  string last4 = 2;
+  string expMonth = 3;
+  string expYear = 4;
+  string funding = 5;
+  string country = 6;
+  string type = 7;
+}
+
+message StripePaymentMethod {
+  string paymentMethodId = 0;
+  string brand = 1;
+  string last4 = 2;
+  string expMonth = 3;
+  string expYear = 4;
+  string funding = 5;
+  string country = 6;
+  string type = 7;
+}
+
+message Card {
+  string brand = 1;
+  string last4 = 2;
+  int32 expMonth = 3;
+  int32 expYear = 4;
+  string funding = 5;
+  string country = 6;
+  string paymentMethodId = 7;
+  string type = 8;
+}
+
+/***************************************************************************************
+  Connect Account
+****************************************************************************************/
+
+message ConnectStripeUserRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string connectCode = 2;  
+}
+
+message ConnectStripeUserResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+message RetrieveStripeConnectAccountRequest {
+  string spanContext = 0;
+  string stripeAccountId = 1;
+}
+
+message RetrieveStripeConnectAccountResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  StripeConnectAccount stripeConnectAccount = 2;
+}
+
+
+/***************************************************************************************
+  Charge
+****************************************************************************************/
+
+message CreateStripeChargeRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string userId = 2;
+  // The total amount being processed
+  // i.e. the order total, etc
+  int32 amount = 3;
+  // The amount the promoter will recieive
+  // (subtracts sellout and stripe fees)
+  int32 transferAmount = 4;
+  // Amount sellout takes as a fee
+  int32 feeAmount = 5;
+  string description = 6;
+  string stripeToken = 7;
+  string currency = 8;
+}
+
+message CreateStripeChargeResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string stripeChargeId = 2;
+}
+
+message RefundStripeChargeRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string stripeChargeId = 2;
+  int32 amount = 3;
+}
+
+message RefundStripeChargeResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string refundId = 2;
+}
+
+message RetrieveStripeChargeRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string stripeChargeId = 2;
+}
+
+message RetrieveStripeChargeResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  StripeCharge stripeCharge = 2;
+}
+
+message RetrieveStripeChargeByIntentsRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string stripeIntentId = 2;
+}
+
+message RetrieveStripeChargeByIntentsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string stripeChargeId = 2;
+}
+/***************************************************************************************
+  Customer
+****************************************************************************************/
+
+message CreateStripeCustomerRequest {
+  string spanContext = 0;
+  string userId = 1;
+}
+
+message CreateStripeCustomerResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  StripeCustomer stripeCustomer = 2;
+}
+
+message RetrieveStripeCustomerRequest {
+  string spanContext = 0;
+  string stripeCustomerId = 1;
+}
+
+message RetrieveStripeCustomerResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  StripeCustomer stripeCustomer = 2;
+}
+
+message UpdateStripeCustomerRequest {
+  string spanContext = 0;
+  string stripeCustomerId = 1;
+  string userId = 2;
+}
+
+message UpdateStripeCustomerResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  StripeCustomer stripeCustomer = 2;
+}
+message CreateStripeSourceRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string stripeToken = 2;
+}
+
+message CreateStripeSourceResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  StripeCustomer stripeCustomer = 2;
+}
+
+message DeleteStripeSourceRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string sourceId = 2;
+}
+
+message DeleteStripeSourceResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+/***************************************************************************************
+  Payment Method
+****************************************************************************************/
+
+message CreateStripeSetupIntentRequest {
+  string spanContext = 0;
+  string userId = 1;
+}
+
+message CreateStripeSetupIntentResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string clientSecret = 2;
+}
+
+message StripePublishKeyByResponse {
+  string publicStripeKey = 0;
+}
+
+
+message AttachStripePaymentMethodRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string paymentMethodId = 2;
+}
+
+message AttachStripePaymentMethodResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  StripePaymentMethod paymentMethod = 2;
+}
+
+message GetStripeCardByMethodRequest {
+  string spanContext = 0;
+  string paymentMethodId = 1;
+}
+
+message GetStripeCardByMethodResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Card card = 2;
+}
+/***************************************************************************************
+  Payment Intent
+****************************************************************************************/
+
+message CreateStripePaymentIntentRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string userId = 2;
+  // The total amount being processed
+  // i.e. the order total, etc
+  int32 amount = 3;
+  // The amount the promoter will recieive
+  // (subtracts sellout and stripe fees)
+  int32 transferAmount = 4;
+  // Amount sellout takes as a fee
+  int32 feeAmount = 5;
+  string description = 6;
+  string currency = 7;
+  string paymentMethodId = 8;
+}
+
+message CreateStripePaymentIntentResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string paymentIntentId = 2;
+  string clientSecret = 3;
+  string ephemeralKey = 4;
+}
+
+message CaptureStripePaymentIntentRequest {
+  string spanContext = 0;
+  string orgId = 1;  
+  string paymentIntentId = 2;
+}
+
+message CaptureStripePaymentIntentResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  bool success = 2;
+  string chargeId = 3;
+}
+
+message CancelStripePaymentIntentRequest {
+  string spanContext = 0;
+  string paymentIntentId = 1;
+}
+
+message CancelStripePaymentIntentResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+/***************************************************************************************
+  Terminal
+****************************************************************************************/
+
+message StripeTerminalReader {
+  string id = 0;
+  string label = 1;
+  string type = 2;
+  string location = 3;
+  string serialNumber = 4;
+  string status = 5;
+  string ipAddress = 6;
+}
+
+message RegisterStripeTerminalReaderRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string orgId = 2;
+  string label = 3;
+  string registrationCode = 4;
+}
+
+message RegisterStripeTerminalReaderResponse{
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  StripeTerminalReader reader = 2;
+}
+
+message ListStripeTerminalReadersRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string orgId = 2;
+}
+
+message ListStripeTerminalReadersResponse{
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated StripeTerminalReader readers = 2;
+}
+
+message DeleteStripeTerminalReaderRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string orgId = 2;
+  string readerId = 3;
+}
+
+message DeleteStripeTerminalReaderResponse{
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  bool success = 2;
+}
+
+message CreateStripeTerminalConnectionTokenRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string orgId = 2;
+}
+
+message CreateStripeTerminalConnectionTokenResponse{
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string connectionToken = 2;
+}
+
+message CreateStripeLocationIdResponse{
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string locationId = 2;
+}
+
+/***************************************************************************************
+  RPC
+****************************************************************************************/
+
+service StripeService {
+  // Connect Account
+  rpc connectStripeUser(ConnectStripeUserRequest) returns (ConnectStripeUserResponse) {}
+  rpc retrieveStripeConnectAccount(RetrieveStripeConnectAccountRequest) returns (RetrieveStripeConnectAccountResponse) {}
+  // Charge
+  rpc createStripeCharge(CreateStripeChargeRequest) returns (CreateStripeChargeResponse) {}
+  rpc refundStripeCharge(RefundStripeChargeRequest) returns (RefundStripeChargeResponse) {}
+  rpc retrieveStripeCharge(RetrieveStripeChargeRequest) returns (RetrieveStripeChargeResponse) {}
+  rpc retrieveStripeChargeByIntent(RetrieveStripeChargeByIntentsRequest) returns (RetrieveStripeChargeByIntentsResponse) {}
+  // Customer
+  rpc createStripeCustomer(CreateStripeCustomerRequest) returns (CreateStripeCustomerResponse) {}
+  rpc retrieveStripeCustomer(RetrieveStripeCustomerRequest) returns (RetrieveStripeCustomerResponse) {}
+  rpc updateStripeCustomer(UpdateStripeCustomerRequest) returns (UpdateStripeCustomerResponse) {}
+  rpc createStripeSource(CreateStripeSourceRequest) returns (CreateStripeSourceResponse) {}
+  rpc deleteStripeSource(DeleteStripeSourceRequest) returns (DeleteStripeSourceResponse) {}
+  // Payment Intent
+  rpc createStripePaymentIntent(CreateStripePaymentIntentRequest) returns (CreateStripePaymentIntentResponse) {}
+  rpc captureStripePaymentIntent(CaptureStripePaymentIntentRequest) returns (CaptureStripePaymentIntentResponse) {}
+  rpc cancelStripePaymentIntent(CancelStripePaymentIntentRequest) returns (CancelStripePaymentIntentResponse) {}
+  // Payment Method
+  rpc createStripeSetupIntent(CreateStripeSetupIntentRequest) returns (CreateStripeSetupIntentResponse) {}
+  rpc attachStripePaymentMethod(AttachStripePaymentMethodRequest) returns (AttachStripePaymentMethodResponse) {}
+  rpc getStripeCardByMethod(GetStripeCardByMethodRequest) returns (GetStripeCardByMethodResponse) {}
+  // Terminal
+  rpc registerStripeTerminalReader(RegisterStripeTerminalReaderRequest) returns (RegisterStripeTerminalReaderResponse) {}
+  rpc listStripeTerminalReaders(ListStripeTerminalReadersRequest) returns (ListStripeTerminalReadersResponse) {}
+  rpc deleteStripeTerminalReader(DeleteStripeTerminalReaderRequest) returns (DeleteStripeTerminalReaderResponse) {}
+  rpc createStripeTerminalConnectionToken(CreateStripeTerminalConnectionTokenRequest) returns (CreateStripeTerminalConnectionTokenResponse) {}
+  rpc createStripeLocationId(CreateStripeTerminalConnectionTokenRequest) returns (CreateStripeLocationIdResponse) {}
+  rpc stripePublishKey(RetrieveStripeChargeRequest) returns (StripePublishKeyByResponse) {}
+
+}

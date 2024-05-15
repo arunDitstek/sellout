@@ -1,0 +1,257 @@
+syntax = "proto3";
+
+import "error.proto";
+import "common.proto";
+
+message Fee {
+  string _id = 0;
+  string name = 1;
+  string orgId = 2;
+  string eventId = 3;
+  string type = 4;
+  double value = 5;
+  string appliedTo  = 6;
+  string appliedBy = 7;
+  int32 minAppliedToPrice = 8;
+  int32 maxAppliedToPrice = 9;
+  repeated string filters = 10;
+  string createdBy = 11;
+  int32 createdAt = 12;
+  string updatedBy = 13;
+  int32 updatedAt = 14;
+  bool disabled = 15;
+  string seasonId = 16;
+  string amount = 17;
+  repeated string paymentMethods = 18;
+  bool isApplyPlatformFee= 19;
+
+}
+
+/****************************************************************************************
+Create Fee
+****************************************************************************************/
+message CreateFeeRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string requestorId = 2;
+  Fee fee = 3;
+  string eventId = 4;
+  string seasonId = 5;
+}
+
+message CreateFeeResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Fee fee = 2;
+}
+
+/****************************************************************************************
+Update Fee
+****************************************************************************************/
+
+message UpdateFeeRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string requestorId = 2;
+  Fee fee = 3;
+  string eventId = 4;
+  string seasonId = 5;
+}
+
+message UpdateFeeResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Fee fee = 2;
+}
+
+/****************************************************************************************
+Update Fee By Event
+****************************************************************************************/
+
+message updateFeeByEventRequest {
+  string spanContext = 0;
+  string eventId = 1;
+  string name = 2;
+  double value = 3;
+}
+
+message updateFeeByEventResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Fee fee = 2;
+}
+
+/****************************************************************************************
+List 
+****************************************************************************************/
+
+message ListFeesByIdRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  repeated string feeIds = 2;
+}
+
+message ListFeesByIdResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Fee fees = 2;
+}
+
+message ListEventFeesRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+  string seasonId = 3;
+}
+
+message ListEventFeesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Fee fees = 2;
+}
+
+message ListOrganizationFeesRequest {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+message ListOrganizationFeesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Fee fees = 2;
+}
+
+message ListPlatformFeesRequest {
+  string spanContext = 0;
+}
+
+message ListPlatformFeesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Fee fees = 2;
+}
+
+message QueryFeesRequest {
+  string spanContext = 0;
+  repeated Query query  = 1;
+  Pagination pagination = 2;
+}
+
+message QueryFeesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Fee fees = 2;
+}
+
+/****************************************************************************************
+Find Fee
+****************************************************************************************/
+
+message FindFeeByIdRequest {
+  string spanContext = 0;
+  string feeId = 1;
+}
+
+message FindFeeByIdResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Fee fee = 2;
+}
+
+/****************************************************************************************
+Disable/Delete Fee
+****************************************************************************************/
+
+message DisableFeeRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string requestorId = 2;
+  string feeId = 3;
+  bool disabled = 4;
+}
+
+message DisableFeeResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Fee fee = 2;
+}
+
+message DeleteOrganizationFeeRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string feeId = 2;
+}
+
+message DeleteOrganizationFeeResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+message DeleteEventOrSeasonFeeRequest {
+  string spanContext = 0;
+  string eventId = 1;
+  string seasonId = 2;
+  string feeId = 3;
+  string orgId = 4;
+  string requestorId = 5;
+}
+
+message DeleteEventOrSeasonFeeResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+message DeletePlatformFeeRequest {
+  string spanContext = 0;
+  string feeId = 1;
+}
+
+message DeletePlatformFeeResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+/****************************************************************************************
+Apply Platform Fees
+****************************************************************************************/
+message ApplyPlatformFeesToAllOrganizationsRequest {
+  string spanContext = 0;
+}
+
+message ApplyPlatformFeesToAllOrganizationsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  bool success = 2;
+}
+
+
+
+service FeeService {
+  // Create
+  rpc createFee(CreateFeeRequest) returns (CreateFeeResponse) {}
+  rpc createOrganizationFee(CreateFeeRequest) returns (CreateFeeResponse) {}
+  rpc createEventOrSeasonFee(CreateFeeRequest) returns (CreateFeeResponse) {}
+  rpc createPlatformFee(CreateFeeRequest) returns (CreateFeeResponse) {}
+  // Update
+  rpc updateFee(UpdateFeeRequest) returns (UpdateFeeResponse) {}
+  rpc updateFeeByEvent(updateFeeByEventRequest) returns (updateFeeByEventResponse) {}
+  rpc updateOrganizationFee(UpdateFeeRequest) returns (UpdateFeeResponse) {}
+  rpc updateEventOrSeasonFee(UpdateFeeRequest) returns (UpdateFeeResponse) {}
+  rpc updatePlatformFee(UpdateFeeRequest) returns (UpdateFeeResponse) {}
+  // List
+  rpc listFeesById(ListFeesByIdRequest) returns (ListFeesByIdResponse) {}  
+  rpc listEventFees(ListEventFeesRequest) returns (ListEventFeesResponse) {}  
+  rpc listOrganizationFees(ListOrganizationFeesRequest) returns (ListOrganizationFeesResponse) {}  
+  rpc listPlatformFees(ListPlatformFeesRequest) returns (ListPlatformFeesResponse) {}  
+  rpc queryFees(QueryFeesRequest) returns (QueryFeesResponse) {}
+  // Find
+  rpc findFeeById(FindFeeByIdRequest) returns (FindFeeByIdResponse) {}  
+  // Delete
+  rpc disableFee(DisableFeeRequest) returns (DisableFeeResponse) {}
+  rpc deleteOrganizationFee(DeleteOrganizationFeeRequest) returns (DeleteOrganizationFeeResponse) {}
+  rpc deleteEventOrSeasonFee(DeleteEventOrSeasonFeeRequest) returns (DeleteEventOrSeasonFeeResponse) {}
+  rpc deletePlatformFee(DeletePlatformFeeRequest) returns (DeletePlatformFeeResponse) {}
+  // Apply Platform Fees
+  rpc applyPlatformFeesToAllOrganizations(ApplyPlatformFeesToAllOrganizationsRequest) returns (ApplyPlatformFeesToAllOrganizationsResponse) {}
+  
+}

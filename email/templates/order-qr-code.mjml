@@ -1,0 +1,106 @@
+<mjml>
+  <mj-include path="../includes/head.mjml"></mj-include>
+  <mj-body background-color="#F9F9F9" width="600px">
+    <mj-include path="../includes/top-bar.mjml"></mj-include>
+    <mj-wrapper padding-top="0" padding-bottom="0" css-class="body-section">
+      <mj-include path="../includes/event-preview-side.mjml"></mj-include>
+     
+
+       <mj-raw>{{#if_eq ticketDeliveryType 'Digital only'}}</mj-raw>
+        <mj-section background-color="#ffffff" padding-top="0px" padding-bottom="0px">
+        <mj-column width="100%">
+          <mj-text align="center" color="#333333" font-weight="600" font-size="24px" line-height="28px" padding-top="0px" padding-bottom="0px">{{ firstName }}, your tickets are here.</mj-text>
+          <mj-text align="center" color="#333333" font-size="14px" line-height="20px" padding-bottom="0px">Your tickets are contained in this magical barcode:</mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section background-color="#ffffff" padding="0px 0px 10px 0px" vertical-align="middle">
+          <mj-column vertical-align="middle" width="100%">
+            <mj-image
+              align="center"
+              width="200px"
+              src="{{{ qrCodeUrl }}}"
+              padding="0px 25px 0px 25px"/>
+          </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" padding="0px 25px">
+        <mj-column>
+          <mj-text color="#333333" font-size="12px" line-height="140%" padding="0px" align="left">
+            This scannable code contains all of your tickets and upgrades. If you have guests showing up at a different time than you, please send them this barcode and they will be able to check in separately.
+          </mj-text>
+          <mj-text color="#333333" font-size="12px" line-height="140%" padding="15px 0px 0px 0px" align="left">
+            You may bring the barcode to the gate on a mobile device, or just bring a valid ID to check in at will call.
+          </mj-text>
+        </mj-column>
+      </mj-section>
+     <mj-raw>{{/if_eq}}</mj-raw> 
+
+
+    <mj-raw>{{#if_eq ticketDeliveryType 'Will-call only'}}</mj-raw>
+      <mj-section background-color="#ffffff" padding-top="0px" padding-bottom="0px">
+        <mj-column width="100%">
+          <mj-text align="center" color="#333333" font-weight="600" font-size="24px" line-height="28px" padding-top="0px" padding-bottom="0px">{{ firstName }}, your tickets are confirmed.</mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" padding="0px 25px">
+        <mj-column>
+          <mj-text color="#333333" font-weight="600" font-size="16px" line-height="140%" padding="36px 0px 0" align="left">
+            Will-call delivery instructions:
+          </mj-text>
+          <mj-text color="#333333" font-size="12px" line-height="140%" padding="10px 0px 0px 0px" align="justify">
+             <pre style="font-family: Work Sans,Helvetica !important">{{ physicalDeliveryInstructions }}</pre>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+     <mj-raw>{{/if_eq}}</mj-raw> 
+
+
+     <mj-raw>{{#if_eq ticketDeliveryType 'Both digital and will-call'}}</mj-raw>
+     <mj-section background-color="#ffffff" padding-top="0px" padding-bottom="0px">
+        <mj-column width="100%">
+          <mj-text align="center" color="#333333" font-weight="600" font-size="24px" line-height="28px" padding-top="0px" padding-bottom="0px">{{ firstName }}, your tickets are here.</mj-text>
+          <mj-text align="center" color="#333333" font-size="14px" line-height="20px" padding-bottom="0px">Your tickets are contained in this magical barcode:</mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" padding="0px 0px 10px 0px" vertical-align="middle">
+          <mj-column vertical-align="middle" width="100%">
+            <mj-image
+              align="center"
+              width="200px"
+              src="{{{ qrCodeUrl }}}"
+              padding="0px 25px 0px 25px"/>
+          </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" padding="0px 25px">
+        <mj-column>
+          <mj-text color="#333333" font-size="12px" line-height="140%" padding="0px" align="left">
+            This scannable code contains all of your tickets and upgrades. If you have guests showing up at a different time than you, please send them this barcode and they will be able to check in separately.
+          </mj-text>
+          <mj-text color="#333333" font-size="12px" line-height="140%" padding="15px 0px 0px 0px" align="left">
+            You may bring the barcode to the gate on a mobile device, or just bring a valid ID to check in at will call.
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section background-color="#ffffff" padding="0px 25px">
+        <mj-column>
+           <mj-text color="#333333" font-weight="600" font-size="16px" line-height="140%" padding="36px 0px 0" align="left">
+            Physical delivery instructions:
+          </mj-text>
+          <mj-text color="#333333" font-size="12px" line-height="140%" padding="10px 0px 0px 0px" align="justify">
+            <pre style="font-family: Work Sans,Helvetica !important">{{ physicalDeliveryInstructions }}</pre>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+     <mj-raw>{{/if_eq}}</mj-raw> 
+
+
+      <mj-include path="../includes/content-divider.mjml" />
+      <mj-include path="../includes/order-summary.mjml"/>
+      <mj-include path="../includes/venue-location.mjml"/>
+      <mj-include path="../includes/add-multiple-day-calender.mjml"/>
+      <mj-include path="../includes/customer-support.mjml"/>
+      <!-- <mj-include path="../includes/mobile-app.mjml" /> -->
+    </mj-wrapper>
+    <mj-include path="../includes/sellout-info.mjml"/>
+  </mj-body>
+</mjml>

@@ -1,0 +1,722 @@
+syntax = "proto3";
+
+import "error.proto";
+import "common.proto";
+
+/****************************************************************************************
+  Order Models
+****************************************************************************************/
+
+message Order {
+  string _id = 0;
+  string orgId = 1;
+  string userId = 2;
+  string eventId = 3;
+  string eventName = 4;
+  repeated string venueIds = 5;
+  repeated string artistIds = 6;
+  repeated string feeIds = 7;
+  int32 createdAt = 8;
+  string stripeChargeId = 9;
+  repeated OrderTicket tickets = 10;
+  repeated OrderUpgrade upgrades = 11;
+  repeated string recipientEmails = 12;
+  string qrCodeUrl = 13;
+  string state = 14;
+  int32 refundedAmount = 15;
+  string type = 16;
+  string channel = 17;
+  string createdBy = 18;
+  string promotionCode = 19;
+  string ipAddress = 20;
+  Address address = 21;
+  repeated OrderCustomField customFields = 22;
+  string refundReason = 23;
+  repeated Payment payments = 24;
+  ProcessingFees processingFee = 25;
+  float tax = 26;
+  string seasonId = 27;
+  bool hidden = 28;
+  bool printed = 29;
+  string parentSeasonOrderId = 30;
+  repeated orderFees fees = 31;
+  ProcessingFees promoterFee = 32;
+  string email = 33;
+  string discountCode = 34;
+  int32 discountAmount = 35;
+
+}
+message ProcessingFees {
+  Refund refund = 0;
+  int32 amount = 1;
+}
+
+message OrderTicket {
+  string _id = 0;
+  string name = 1;
+  string ticketTypeId = 2;
+  string ticketTierId = 3;
+  int32 price = 4;
+  bool rollFees = 5;
+  string paymentId = 6;
+  string seat = 7;
+  Refund refund = 8;
+  repeated Scan scan = 9;
+  string state = 10;
+  string qrCodeUrl = 11;
+  string values=12;
+  string description = 13;
+  repeated string dayIds = 14;
+  string teiMemberId = 15;
+  bool isMemberIdValid = 16;
+  TeiMemberInfoParams teiMemberInfo = 17;
+  bool guestTicket = 18;
+  int32 origionalPrice = 19;
+}
+
+message orderFees {
+  string _id = 0;
+  string name = 1;
+  string orgId = 2;
+  string eventId = 3;
+  string type = 4;
+  double value = 5;
+  string appliedTo  = 6;
+  string appliedBy = 7;
+  int32 minAppliedToPrice = 8;
+  int32 maxAppliedToPrice = 9;
+  repeated string filters = 10;
+  string createdBy = 11;
+  int32 createdAt = 12;
+  string updatedBy = 13;
+  int32 updatedAt = 14;
+  bool disabled = 15;
+  string seasonId = 16;
+  string amount = 17;
+
+}
+
+message TeiMemberInfoParams {
+    string firstName = 0;
+    string lastName = 1;
+    string email = 2;
+    string phoneNumber = 3;
+}
+
+message OrderUpgrade {
+  string _id = 0;
+  string name = 1;
+  string upgradeId = 2;
+  int32 price = 3;
+  bool rollFees = 4;
+  string paymentId = 5;
+  Refund refund = 6;
+  Scan scan = 7;
+  string state = 8;
+  string qrCodeUrl = 9;
+  string values=10;
+
+}
+
+message Scan {
+  bool scanned = 0;
+  int32 scannedAt = 1;
+  string scannedBy = 2;
+  int32 startsAt = 3;
+}
+
+message Refund {
+  bool refunded = 0;
+  int32 refundedAt = 1;
+  string refundedBy = 2;
+  int32 refundedAmount = 3;
+  string refundReason =4;
+}
+
+message OrderCustomField {
+  string _id = 0;
+  string label = 1;
+  string value = 2;
+  string customFieldId = 3;
+  string type = 4;
+}
+
+message Payment {
+  string _id = 0;
+  string paymentIntentId = 1;
+  int32 amount = 2;
+  int32 transferAmount = 3;
+  int32 feeAmount = 4;
+  repeated string feeIds = 5;
+  int32 createdAt = 6;
+  string createdBy = 7;
+  string promotionCode = 8;
+  string paymentMethodType = 9;
+  int32 tax = 10;
+  string discountCode = 11;
+  int32 discount = 12;
+}
+
+/****************************************************************************************
+  Create Order
+****************************************************************************************/
+
+message CreateOrderParams {
+  string userId = 0;
+  string orgId = 1;
+  string eventId = 2;
+  repeated CreateOrderTicketParams tickets = 3;
+  repeated CreateOrderUpgradeParams upgrades = 4;
+  string type = 5;
+  string channel = 6;
+  string promotionCode = 7;
+  repeated OrderCustomField customFields = 8;
+  string paymentMethodType = 9;
+  string paymentIntentId = 10;
+  string holdToken = 11;
+  string ipAddress = 12;
+  bool hidden = 13;
+  string parentSeasonOrderId = 14;
+  string discountCode = 15;
+  int32 discountAmount = 16;
+
+}
+
+
+message CreateSeasonOrderParams {
+  string userId = 0;
+  string orgId = 1;
+  string seasonId = 2;
+  repeated CreateOrderTicketParams tickets = 3;
+  repeated CreateOrderUpgradeParams upgrades = 4;
+  string type = 5;
+  string channel = 6;
+  string promotionCode = 7;
+  repeated OrderCustomField customFields = 8;
+  string paymentMethodType = 9;
+  string paymentIntentId = 10;
+  string holdToken = 11;
+  string ipAddress = 12;
+  // repeated string eventIds = 13;
+}
+
+message CreateOrderTicketParams {
+  string name = 0;
+  string ticketTypeId = 1;
+  string ticketTierId = 2;
+  int32 price = 3;
+  bool rollFees = 4;
+  string seat = 5;
+  string values = 6;
+  string description = 7;
+  string type = 8;
+  repeated string dayIds = 9;
+  string teiMemberId = 10;
+  bool isMemberIdValid = 11;
+  TeiMemberInfoParams teiMemberInfo = 12;
+  bool guestTicket = 13;
+  int32 origionalPrice = 14;
+}
+
+message CreateOrderUpgradeParams {
+  string name = 0;
+  string upgradeId = 1;
+  int32 price = 2;
+  bool rollFees = 3;
+}
+
+message CreateOrderRequest {
+  string spanContext = 0;
+  string requestorId = 1;
+  CreateOrderParams params = 2;
+}
+
+message CreateOrderResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  Order order = 3;
+}
+
+
+
+message CreateSeasonOrderRequest {
+  string spanContext = 0;
+  string requestorId = 1;
+  CreateSeasonOrderParams params = 2;
+}
+
+message CreateSeasonOrderResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  Order order = 3;
+}
+
+/****************************************************************************************
+  Create Order Payment Intent
+****************************************************************************************/
+
+message CreateOrderPaymentIntentParams {
+  string userId = 0;
+  string orgId = 1;
+  string eventId = 2;
+  repeated CreateOrderTicketParams tickets = 3;
+  repeated CreateOrderUpgradeParams upgrades = 4;
+  string promotionCode = 5;
+  string paymentMethodType = 6;
+  string paymentMethodId = 7;
+  string stalePaymentIntentId = 8;
+  string channel = 9;
+  string discountCode = 10;
+  int32 discount = 11;
+
+}
+
+message CreateOrderPaymentIntentRequest {
+  string spanContext = 0;
+  string requestorId = 1;
+  CreateOrderPaymentIntentParams params = 2;
+}
+
+
+message CreateSeasonOrderPaymentIntentRequest {
+  string spanContext = 0;
+  string requestorId = 1;
+  CreateSeasonOrderPaymentIntentParams params = 2;
+}
+
+message CreateSeasonOrderPaymentIntentParams {
+  string userId = 0;
+  string orgId = 1;
+  string seasonId = 2;
+  repeated CreateOrderTicketParams tickets = 3;
+  repeated CreateOrderUpgradeParams upgrades = 4;
+  string promotionCode = 5;
+  string paymentMethodType = 6;
+  string paymentMethodId = 7;
+  string stalePaymentIntentId = 8;
+  string channel = 9;
+}
+
+message CreateOrderPaymentIntentResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  string paymentIntentId = 3;
+  string clientSecret = 4;
+  string ephemeralKey = 5;
+}
+
+/****************************************************************************************
+  Refund Order
+****************************************************************************************/
+
+message RefundOrderRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string orderId = 2;
+  int32 refundAmount = 3;
+  repeated string ticketIds = 4;
+  repeated string upgradeIds = 5;
+  string refundedBy = 6;
+  string refundReason = 7;
+  bool processingFee = 8;
+  string eventType = 9;
+  bool promoterFee = 10;
+
+}
+
+message RefundOrderResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  Order order = 3;
+}
+
+message RefundEventOrdersRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+  string refundedBy = 3;
+  bool dryRun = 4;
+  string refundReason = 5;
+  string eventType = 6;
+}
+
+message RefundEventOrdersResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  bool allRefunded = 2;
+  int32 refundCount = 3;
+  int32 refundAmount = 4;
+  int32 feeAmount = 5;
+  bool dryRun = 6;
+}
+
+/****************************************************************************************
+  Cancel Order
+****************************************************************************************/
+
+message CancelOrderRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string orderId = 2;
+  repeated string ticketIds = 3;
+  repeated string upgradeIds = 4;
+  string cancelReason = 5;
+  string eventType = 6;
+  string requestorId = 7;
+}
+
+message CancelOrderResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  Order order = 3;
+}
+
+/****************************************************************************************
+  Update Order
+****************************************************************************************/
+message UpdateOrderParams {
+  string orderId = 0;
+  string ticketId = 1;
+  repeated Scan scan = 2;
+  string email = 3;
+}
+
+
+message UpdateOrderRequest {
+  string spanContext = 0;
+  UpdateOrderParams params = 1;
+}
+
+message UpdateGuestOrderParams {
+  string orderId = 0;
+  string email = 1;
+}
+
+
+message UpdateGuestOrderRequest {
+  string spanContext = 0;
+  UpdateGuestOrderParams params = 1;
+  string requestorId = 2;
+}
+
+message UpdateOrderResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  Order order = 3;
+}
+/****************************************************************************************
+  QR Code
+****************************************************************************************/
+
+// TODO add orgId to these requests
+
+message SendOrderReceiptEmailRequest {
+  string spanContext = 0;
+  string orderId = 1;
+  string requestorId = 2;
+}
+
+message SendOrderReceiptEmailResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+message SendOrderQRCodeEmailRequest {
+  string spanContext = 0;
+  string orderId = 1;
+  string requestorId = 2;
+}
+
+message SendOrderQRCodeEmailResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+message SendOrderRefundEmailRequest {
+  string spanContext = 0;
+  string orderId = 1;
+  repeated string ticketIds = 2;
+  repeated string upgradeIds = 3;
+  bool processingFee = 4;
+  bool promoterFee = 5;
+}
+
+message SendOrderRefundEmailResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+message ScanOrderRequest {
+  string spanContext = 0;
+  string orderId = 1;
+  repeated string ticketIds = 2;
+  repeated string upgradeIds = 3;
+  string scannedBy = 4;
+}
+
+message ScanOrderResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Order order = 2;
+}
+
+/****************************************************************************************
+  Order Report
+****************************************************************************************/
+
+message GenerateOrderReportRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  OrderQuery query = 2;
+  string userId = 3;
+}
+
+message GenerateOrderReportResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string url = 2;
+  string message = 3;
+}
+
+/****************************************************************************************
+  Find Order
+****************************************************************************************/
+
+message OrderQuery {
+  repeated string orderIds = 0;
+  repeated string eventIds = 1;
+  repeated string venueIds = 2; 
+  repeated string artistIds = 3;
+  repeated string userIds = 4;
+  repeated string states = 5;
+  repeated string types = 6;
+  string userQuery = 7;
+  int32 startDate = 8;
+  int32 endDate = 9;
+  bool any = 10;
+  repeated string seasonIds = 11;
+}
+
+message QueryOrdersRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  OrderQuery query = 2;
+  Pagination pagination = 3;
+  string userId = 4;
+
+}
+
+message QueryOrdersResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  repeated Order orders = 3;
+}
+
+
+message FindOrderByIdRequest {
+  string spanContext = 0;
+  string orderId = 1;
+}
+
+message FindOrderByEventIdRequest{
+  string spanContext = 0;
+  string eventId = 1;
+  int32 ticketSold = 2;
+  int32 ticketScanned = 3;
+  int32 ticketUnscanned = 4;
+}
+
+message FindOrderByEventIdResponse{
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string eventId = 2;
+  int32 ticketSold = 3;
+  int32 ticketScanned = 4;
+  int32 ticketUnscanned = 5;
+}
+
+message FindEventOrderCountResponse{
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  int32 eventOrderCount = 2;
+}
+
+
+
+message FindOrderByFeeIdRequest {
+  string spanContext = 0;
+  string feeId = 1;
+}
+
+message FindOrderByIdResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Order order = 2;
+}
+
+message FindOrderByEmailRequest {
+  string spanContext = 0;
+  string email = 1;
+}
+
+message FindOrderByEmailResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Order order = 2;
+}
+
+/****************************************************************************************
+  Query Order Analytics
+****************************************************************************************/
+
+message OrderAnalyticsQuery {
+  string eventId = 0;
+  string venueId = 1;
+  string artistId = 2;
+  string userId = 3;
+  int32 startDate = 4;
+  int32 endDate = 5;
+  string interval = 6;
+  repeated string types = 7;
+  string seasonId = 8;
+}
+
+message QueryOrderAnalyticsRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  OrderAnalyticsQuery query = 2;
+}
+
+message QueryOrderAnalyticsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Analytics analytics = 2;
+}
+
+/****************************************************************************************
+  Break Apart Order
+****************************************************************************************/
+
+message BreakApartOrderRequest {
+  string spanContext = 0;
+  string orderId = 1;
+}
+
+message BreakApartOrderResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Order order = 2;
+}
+
+message MultipleBreakApartOrderRequest {
+  string spanContext = 0;
+  repeated string orderId = 1;
+}
+
+message MultipleBreakApartOrderResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Order order = 2;
+}
+
+message BreakApartSeasonOrderResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Order order = 2;
+}
+
+message OrdersChargeUpdateRequest {
+  string spanContext = 0;
+}
+
+message OrdersChargeUpdateResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  string message = 2;
+}
+
+message TicketRestrictionRequest{
+  string spanContext = 0;
+  MemberIdQuery query = 1;
+}
+
+
+message MemberIdQuery {
+   string eventId = 0;
+   string seasonId = 1;
+  repeated string teiMemberId = 2; 
+}
+
+message TicketRestrictionResponse{
+  string eventId = 0;
+  string seasonId = 1;
+  repeated string teiMemberId = 2;
+  repeated string invalidTeiMemberIds = 3;
+  StatusCode status = 4;
+  repeated GuestTicketCounts  guestTicketCounts = 5;
+}
+message GuestTicketCounts {
+  string teiMemberId = 0;
+  int32 count = 1;
+  bool inValid = 2;
+}
+
+message GetPromoUsedRequest {
+  string spanContext = 0;
+  string promoCode = 1;
+  string userId = 2;
+  string eventId = 3;
+  string seasonId = 4;
+}
+message GetPromoUsedResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  int32 count = 2;
+}
+
+
+
+service OrderService {
+  // Create
+  rpc createOrder(CreateOrderRequest) returns (CreateOrderResponse) {}
+  rpc createSeasonOrder(CreateSeasonOrderRequest) returns (CreateOrderResponse) {}
+  rpc createOrderPaymentIntent(CreateOrderPaymentIntentRequest) returns (CreateOrderPaymentIntentResponse) {}
+  rpc createSeasonOrderPaymentIntent(CreateSeasonOrderPaymentIntentRequest) returns (CreateOrderPaymentIntentResponse) {}
+  // QR Code
+  rpc sendOrderQRCodeEmail(SendOrderQRCodeEmailRequest) returns (SendOrderQRCodeEmailResponse) {}
+  rpc sendSeasonOrderReceiptEmail(SendOrderReceiptEmailRequest) returns (SendOrderReceiptEmailResponse) {}
+  rpc sendOrderReceiptEmail(SendOrderReceiptEmailRequest) returns (SendOrderReceiptEmailResponse) {}
+  rpc sendOrderRefundEmail(SendOrderRefundEmailRequest) returns (SendOrderRefundEmailResponse) {}
+  rpc resendOrderRefundEmail(SendOrderRefundEmailRequest) returns (SendOrderRefundEmailResponse) {}
+
+  rpc scanOrder(ScanOrderRequest) returns (ScanOrderResponse) {}
+  rpc breakApartOrder(BreakApartOrderRequest) returns (BreakApartOrderResponse) {}
+  rpc breakApartSeasonOrder(BreakApartOrderRequest) returns (BreakApartSeasonOrderResponse) {}
+  rpc multipleBreakApartOrder(MultipleBreakApartOrderRequest) returns(MultipleBreakApartOrderResponse){}
+  rpc multipleBreakApartSeasonOrder(MultipleBreakApartOrderRequest) returns(MultipleBreakApartOrderResponse){}
+  rpc batchPrintBreakApartOrder(MultipleBreakApartOrderRequest) returns(MultipleBreakApartOrderResponse){}
+
+
+  rpc orderQRCodeEmailOnDay(SendOrderQRCodeEmailRequest) returns (SendOrderQRCodeEmailResponse) {}
+  // Refund
+  rpc refundOrder(RefundOrderRequest) returns (RefundOrderResponse) {}
+  rpc cancelOrder(CancelOrderRequest) returns (CancelOrderResponse) {}
+  rpc refundEventOrders(RefundEventOrdersRequest) returns (RefundEventOrdersResponse) {}
+  // Report
+  rpc generateOrderReport(GenerateOrderReportRequest) returns (GenerateOrderReportResponse) {}
+  // Find
+  rpc generateActivityReport(GenerateOrderReportRequest) returns (GenerateOrderReportResponse) {}
+  rpc queryOrders(QueryOrdersRequest) returns (QueryOrdersResponse) {}
+  rpc findOrderById(FindOrderByIdRequest) returns (FindOrderByIdResponse) {}
+  rpc findOrderByEventId(FindOrderByEventIdRequest) returns (FindOrderByEventIdResponse) {}
+  rpc eventOrderCount(FindOrderByEventIdRequest) returns (FindEventOrderCountResponse) {}
+  rpc findOrderByFeeId(FindOrderByFeeIdRequest) returns (FindOrderByIdResponse) {}
+  rpc findOrderByEmail(FindOrderByEmailRequest) returns (FindOrderByEmailResponse) {}
+  rpc queryOrderAnalytics(QueryOrderAnalyticsRequest) returns (QueryOrderAnalyticsResponse) {}
+  rpc ordersChargeUpdate(OrdersChargeUpdateRequest) returns (OrdersChargeUpdateResponse) {}
+  rpc getPromoUsed(GetPromoUsedRequest) returns (GetPromoUsedResponse) {}
+  rpc ticketRestriction(TicketRestrictionRequest) returns(TicketRestrictionResponse){}
+  rpc updateOrder(UpdateOrderRequest) returns(UpdateOrderResponse){}
+  rpc updateGuestOrder(UpdateGuestOrderRequest) returns(UpdateOrderResponse){}
+  
+}

@@ -1,0 +1,9 @@
+const env = (window as any).SERVER_DATA && (window as any).SERVER_DATA.env ? (window as any).SERVER_DATA.env : {};
+export const NODE_ENV = env.NODE_ENV || 'development';
+// export const DEBUG_ENABLED = env.DEBUG_ENABLED || 1;
+export const DEBUG_ENABLED =1;
+export const API_URL = env.API_URL || 'http://localhost:4000';
+// export const API_URL = env.API_URL || 'http://10.0.0.3:4000';
+export const EMBED_URL = env.EMBED_URL || 'https://embed.sellout.cool';
+export const STRIPE_PUBLIC_KEY = env.STRIPE_PUBLIC_KEY || 'pk_test_51JcGTSHj9uii3jZ8j2yFHUpDyzq1qWk0RD4O6zcpNDfUs0yNE3o5SHAdx2bdPowGiCrZIoiVnWFN5Do55nDkzv2o00j3yb3wxQ';
+export const SENTRY_DSN = env.SENTRY_DSN || null;

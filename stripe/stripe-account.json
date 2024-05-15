@@ -1,0 +1,82 @@
+{
+  "id": "acct_1DojU3JlYhYd9twA",
+  "object": "account",
+  "business_logo": null,
+  "business_logo_large": null,
+  "business_name": null,
+  "business_primary_color": null,
+  "business_url": null,
+  "charges_enabled": true,
+  "country": "US",
+  "created": 1546587915,
+  "debit_negative_balances": true,
+  "decline_charge_on": {
+    "avs_failure": false,
+    "cvc_failure": false
+  },
+  "default_currency": "usd",
+  "details_submitted": true,
+  "display_name": null,
+  "email": "samheutmaker@gmail.com",
+  "external_accounts": {
+    "object": "list",
+    "data": [{
+      "id": "card_1DojU3JlYhYd9twA0nkb2oh2",
+      "object": "card",
+      "account": "acct_1DojU3JlYhYd9twA",
+      "address_city": null,
+      "address_country": "US",
+      "address_line1": null,
+      "address_line1_check": null,
+      "address_line2": null,
+      "address_state": null,
+      "address_zip": null,
+      "address_zip_check": null,
+      "available_payout_methods": ["standard"],
+      "brand": "Visa",
+      "country": "US",
+      "currency": "usd",
+      "cvc_check": null,
+      "default_for_currency": true,
+      "dynamic_last4": null,
+      "exp_month": 11,
+      "exp_year": 2022,
+      "fingerprint": "RaQVAVJyWApsZvl2",
+      "funding": "debit",
+      "last4": "9057",
+      "metadata": {},
+      "name": null,
+      "tokenization_method": null
+    }],
+    "has_more": false,
+    "total_count": 1,
+    "url": "/v1/accounts/acct_1DojU3JlYhYd9twA/external_accounts"
+  },
+  "login_links": {
+    "object": "list",
+    "total_count": 0,
+    "has_more": false,
+    "url": "/v1/accounts/acct_1DojU3JlYhYd9twA/login_links",
+    "data": []
+  },
+  "mcc": null,
+  "metadata": {},
+  "payout_schedule": {
+    "delay_days": 2,
+    "interval": "daily"
+  },
+  "payout_statement_descriptor": null,
+  "payouts_enabled": true,
+  "statement_descriptor": "",
+  "support_address": null,
+  "support_email": null,
+  "support_phone": "+14062104444",
+  "support_url": null,
+  "timezone": "Etc/UTC",
+  "type": "express",
+  "verification": {
+    "disabled_reason": null,
+    "due_by": null,
+    "fields_needed": ["legal_entity.address.city", "legal_entity.address.line1", "legal_entity.address.postal_code", "legal_entity.address.state", "legal_entity.ssn_last_4"]
+  }
+}

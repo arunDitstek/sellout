@@ -1,0 +1,15 @@
+<mj-section background-color="#ffffff" padding-left="15px" padding-right="15px" padding-top="0px" padding-bottom="5px">
+  <mj-column width="100%">
+    <mj-text color="#8B94A9" font-weight="400" font-size="10px" line-height="12px" padding="0px" padding-top="5px" padding-left="25px" text-transform="uppercase">
+      {{ orgName }}
+    </mj-text>
+    <mj-text color="#3E4C6F" font-weight="600" font-size="24px" line-height="32px" padding-top="5px" padding-bottom="5px">
+      {{ eventName }}
+    </mj-text>
+    <mj-text color="#8B94A9" font-weight="500" font-size="14px" line-height="16px" padding-top="0px" padding-bottom="0px">
+      {{ eventSubtitle }}
+    </mj-text>
+  </mj-column>
+</mj-section>
+
+<mj-include path="./content-divider.mjml" />

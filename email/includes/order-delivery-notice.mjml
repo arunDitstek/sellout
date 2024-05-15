@@ -1,0 +1,14 @@
+<mj-section background-color="#ffffff" padding="0 25px 0 25px">
+  <mj-column width="100%">
+    <mj-text color="#333333" font-weight="600" font-size="14px" line-height="16px" padding="0px 0px 15px 0px">
+      Delivery Notice
+    </mj-text>
+    <mj-text color="#333333" font-size="14px" line-height="140%" padding="0px 0px 15px 0px">
+      Your ticket barcode will be emailed to you on {{ qrCodeAt }}.
+    </mj-text>
+    <mj-text color="#333333" font-size="12px" line-height="140%" padding="0px 0px 15px 0px">
+      Please take note of the delivery time displayed above. For some shows, we may delay the delivery of tickets until just before the event in an effort to thwart ticket scalpers and fraud. You can bring your mobile device to scan your tickets at the gate, or bring a valid ID to check in at will call.
+    </mj-text>
+  </mj-column>
+</mj-section>
+<mj-include path="./content-divider.mjml" />

@@ -1,0 +1,201 @@
+{
+  "_id": "5d88f46ec5599e0e7db23c88",
+  "lastUpdated": "2019-09-23T16:35:58.805Z",
+  "createdOn": "2019-07-18T21:06:32.159Z",
+  "name": "Venues",
+  "slug": "venues",
+  "singularName": "Venue",
+  "fields": [{
+    "name": "Venue Image",
+    "slug": "venue-image",
+    "type": "ImageRef",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "fb5795aa6549b4cbcc2765c046649bcc"
+  }, {
+    "name": "Venue Description",
+    "slug": "venue-description",
+    "type": "RichText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "0a756bd78f598f6166e8fc9971f2599f"
+  }, {
+    "name": "Description Plain Text",
+    "slug": "description-plain-text",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "4195f3634cb08b661409c7386e897dac",
+    "validations": {
+      "singleLine": false
+    }
+  }, {
+    "name": "Address Line 1",
+    "slug": "address-line-1",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "871b84ebe3668146de38ad58504d2da1",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Address Line 2",
+    "slug": "address-line-2",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "236042eea6b282da06b99eefaba199d7",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "City",
+    "slug": "city",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "0c2c63de051b5f01e2106e02801167bb",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "State",
+    "slug": "state",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "6a3b05b09a367014c230bcc934ee3062",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Zip Code",
+    "slug": "zip-code",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "c56abab4779872f2ac2c8448f27fb81c",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Country",
+    "slug": "country",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "0e0407d4438469fa1ddd12e52c8f3066",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Sellout ID",
+    "slug": "sellout-id",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "505e6c70bac66db432d31c0f4c6f477c",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Name",
+    "slug": "name",
+    "type": "PlainText",
+    "required": true,
+    "editable": true,
+    "id": "11cc1bbccc91d4dd4470ce93aedd3237",
+    "validations": {
+      "maxLength": 256
+    }
+  }, {
+    "name": "Slug",
+    "slug": "slug",
+    "type": "PlainText",
+    "required": true,
+    "editable": true,
+    "unique": true,
+    "id": "723dfe8a8b8a6300bfa4af19267783c8",
+    "validations": {
+      "maxLength": 256,
+      "messages": {
+        "pattern": "Must be alphanumerical and not "
+      }
+    }
+  }, {
+    "name": "Archived",
+    "slug": "_archived",
+    "type": "Bool",
+    "required": true,
+    "editable": true,
+    "id": "3ceb8984f601ad0c1c96bbc7e215dbdc",
+    "default": false
+  }, {
+    "name": "Draft",
+    "slug": "_draft",
+    "type": "Bool",
+    "required": true,
+    "editable": true,
+    "id": "95839ecb69357c55239250cafb2420c7",
+    "default": false
+  }, {
+    "name": "Created On",
+    "slug": "created-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "3e884dc4dea7e045525a48c8fff7218e"
+  }, {
+    "name": "Updated On",
+    "slug": "updated-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "297b8a5e911cc154d54d40a679a27183"
+  }, {
+    "name": "Published On",
+    "slug": "published-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "4c6cecbe34dabf5d1f826a482ab8f88d"
+  }, {
+    "name": "Created By",
+    "slug": "created-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "2c964b76f5c6d05b0a77ce46259b86a1"
+  }, {
+    "name": "Updated By",
+    "slug": "updated-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "9cfeeb55cdacb0f5bedcc7376fb58f9f"
+  }, {
+    "name": "Published By",
+    "slug": "published-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "343100da9561a67ed326989bfaa37c79"
+  }],
+  "_meta": {
+    "rateLimit": {
+      "limit": 60,
+      "remaining": 47
+    }
+  }
+}

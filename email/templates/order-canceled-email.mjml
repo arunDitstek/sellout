@@ -1,0 +1,28 @@
+<mjml>
+  <mj-include path="../includes/head.mjml"></mj-include>
+  <mj-body background-color="#F9F9F9" width="600px">
+    <mj-include path="../includes/top-bar.mjml"></mj-include>
+    <mj-wrapper padding-top="0" padding-bottom="0px" css-class="body-section">
+      <mj-include path="../includes/event-preview-side.mjml"></mj-include>
+      <mj-section background-color="#ffffff" padding-top="0px" padding-bottom="0px">
+        <mj-column width="100%">
+          <mj-text align="center" color="#333333" font-weight="600" font-size="24px" line-height="28px" padding-top="0px" padding-bottom="0px">Your order has been canceled</mj-text>
+          <mj-text align="center" color="#333333" font-size="14px" line-height="20px" padding-bottom="0px">If you believe you have received this message in error, please contact {{ orgName }}.</mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-raw>{{#if refundReason}}</mj-raw>
+        <mj-section background-color="#ffffff" padding-top="0px" padding-bottom="0px">
+          <mj-column width="100%">
+            <mj-text align="center" color="#333333" font-weight="600" font-size="24px" line-height="28px" padding-top="15px" padding-bottom="0px">Reason for cancelation:</mj-text>
+            <mj-text align="center" color="#333333" font-size="14px" line-height="20px" padding-bottom="0px">{{ refundReason }}</mj-text>
+          </mj-column>
+        </mj-section>
+      <mj-raw>{{/if}}</mj-raw>
+      <mj-include path="../includes/content-divider.mjml"></mj-include>
+      <mj-include path="../includes/order-canceled-summary.mjml"></mj-include>
+      <mj-include path="../includes/venue-location.mjml"></mj-include>
+      <mj-include path="../includes/customer-support.mjml"></mj-include>
+    </mj-wrapper>
+    <mj-include path="../includes/sellout-info.mjml"></mj-include>
+  </mj-body>
+</mjml>

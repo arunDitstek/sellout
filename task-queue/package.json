@@ -1,0 +1,65 @@
+{
+  "name": "task-queue",
+  "version": "0.0.278",
+  "private": true,
+  "description": "The task queue service",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "npm run build:setup && npm run compile",
+    "build:setup": "cp node_modules/@sellout/service/.dist/build/* .",
+    "compile": "tsc --project .",
+    "dev": "npm run build && node .dist/index.js",
+    "start": "npm-watch dev",
+    "start-production": "node .dist/index.js"
+  },
+  "watch": {
+    "dev": {
+      "patterns": [
+        "src"
+      ],
+      "quiet": false,
+      "legacyWatch": true,
+      "extensions": "ts, js"
+    }
+  },
+  "author": "samheutmaker@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^16.1.7",
+    "@react-pdf/layout": "3.6.4",
+    "@react-pdf/primitives": "^2.0.0",
+    "@react-pdf/renderer": "3.1.14",
+    "@sellout/models": "^0.0.278",
+    "@react-pdf/textkit": "4.2.0",
+    "@sellout/service": "^0.0.278",
+    "@sellout/utils": "^0.0.278",
+    "@swc/helpers": "0.4.36",
+    "@types/hapi__joi": "^16.0.1",
+    "bcrypt": "^5.0.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.24.0",
+    "mongoose": "^6.0.0",
+    "react": "^18.2.0",
+    "shortid": "^2.2.14"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.22",
+    "@types/long": "^3.0.32",
+    "@types/mocha": "^2.2.44",
+    "@types/mongodb": "^3.1.12",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^16.11.1",
+    "chai": "^4.3.4",
+    "chai-http": "^4.2.0",
+    "mocha": "^10.2.0",
+    "npm-watch": "^0.11.0",
+    "ts-loader": "^5.2.2",
+    "tslint": "^5.20.0",
+    "tslint-config-airbnb": "^5.4.2",
+    "typescript": "^4.4.2"
+  }
+}

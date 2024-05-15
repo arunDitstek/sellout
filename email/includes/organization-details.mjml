@@ -1,0 +1,25 @@
+<mj-section background-color="#ffffff" padding-left="15px" padding-right="15px" padding-top="0px" padding-bottom="5px">
+  <mj-column width="50%">
+    <mj-text color="#3E4C6F" font-size="18px" line-height="20px" font-weight="500" padding-bottom="22px">
+      {{ orgName }}
+    </mj-text>
+    <mj-text color="#FDC33C" font-size="14px" line-height="16px" font-weight="500" padding-bottom="0px">
+      {{ orgEmail }}
+    </mj-text>
+    <mj-text color="#FDC33C" font-size="14px" line-height="16px" font-weight="500" padding-bottom="22px">
+      {{ orgPhoneNumber }}
+    </mj-text>
+    <mj-text color="#3E4C6F" font-size="14px" line-height="20px" font-weight="400" padding-bottom="0">
+      {{ orgAddress1 }}
+    </mj-text>
+    <mj-text color="#3E4C6F" font-size="14px" line-height="20px" font-weight="400" padding-top="0px" padding-bottom="5px">
+      {{ orgAddress2 }}
+    </mj-text>
+  </mj-column>
+  <mj-column width="50%">
+    <mj-image align="left" src="{{{ orgLogoUrl }}}" alt="" />
+  </mj-column>
+</mj-section>
+
+
+<mj-include path="./content-divider.mjml" />

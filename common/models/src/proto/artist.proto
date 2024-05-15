@@ -1,0 +1,157 @@
+syntax = "proto3";
+
+import "error.proto";
+import "common.proto";
+
+message Artist {
+  string _id = 1;
+  string name = 2;
+  string orgId = 3;
+  string type = 4;
+  repeated string genres = 5;
+  repeated SocialAccountLink socialAccounts = 6;
+  repeated ArtistPressKit pressKits = 7;
+  repeated ArtistContact contacts = 8;
+  string artistGlobalId = 9;
+  int32 createdAt = 10;
+}
+
+message SocialAccountLink {
+  string _id = 0;
+  string platform = 1;
+  string link = 2;
+}
+
+message ArtistPressKit {
+  string _id = 0;
+  string title = 1;
+  string description = 2;
+  repeated string posterImageUrls = 3;
+  repeated SocialAccountLink links = 4;
+}
+
+message ArtistContact {
+  string _id = 0;
+  string firstName = 1;
+  string lastName = 2;
+  string title = 3;
+  string company = 4;
+  string email = 5;
+  string phoneNumber = 6;
+}
+
+
+// Create Artist
+message CreateArtistRequest {
+  string spanContext = 0;
+  Artist artist = 1;
+  string orgId = 2;
+}
+
+message CreateArtistResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  Artist artist = 3;
+}
+
+// Update Artist
+message UpdateArtistRequest {
+  string spanContext = 1;
+  Artist artist = 2;
+  string orgId = 3;
+  
+}
+
+message UpdateArtistResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  Artist artist = 3;
+}
+
+/****************************************************************************************
+  Find Artist
+****************************************************************************************/
+
+message ArtistQuery {
+  string name = 0;
+  repeated string artistIds = 1;
+  bool any = 2;
+}
+
+message QueryArtistsRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  ArtistQuery query = 2;
+  Pagination pagination = 3;
+}
+
+message QueryArtistsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Artist artists = 2;
+}
+
+// Find Artist
+
+message FindArtistByIdRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string artistId = 2;
+}
+
+message FindArtistByIdResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  Artist artist = 3;
+}
+
+// List Artists By Id
+message ListArtistsByIdRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  repeated string artistIds = 2;
+}
+
+message ListArtistsByIdResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  repeated Artist artists = 3;
+}
+
+// List Artists
+message ListArtistsRequest {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+message ListArtistsResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  repeated Artist artists = 3;
+}
+
+message QueryGlobalArtistsRequest {
+  string spanContext = 0;
+  repeated Query query = 1;
+  Pagination pagination = 2; 
+}
+
+message QueryGlobalArtistsResponse {
+  StatusCode status = 1;
+  repeated Error errors = 2;
+  repeated Artist artists = 3;
+}
+
+service ArtistService {
+  // Create
+  rpc createArtist(CreateArtistRequest) returns (CreateArtistResponse) {}
+  // Update
+  rpc updateArtist(UpdateArtistRequest) returns (UpdateArtistResponse) {}
+  // Find
+  rpc findArtistById(FindArtistByIdRequest) returns (FindArtistByIdResponse) {} 
+  // List
+  rpc queryArtists(QueryArtistsRequest) returns (QueryArtistsResponse) {}
+  rpc listArtists(ListArtistsRequest) returns (ListArtistsResponse) {}
+  rpc listArtistsById(ListArtistsByIdRequest) returns (ListArtistsByIdResponse) {}
+  rpc queryGlobalArtists(QueryGlobalArtistsRequest) returns (QueryGlobalArtistsResponse) {}
+}

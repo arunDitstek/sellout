@@ -1,0 +1,28 @@
+{
+  "name": "@sellout/utils",
+  "version": "0.0.278",
+  "description": "Sellout.io utils",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc --project .",
+    "start": "nodemon --watch src -e json,js,ts -x \"npm run build\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "www.github.com/sellout-tickets/sellout/commmon/utils"
+  },
+  "author": "samheutmaker@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "json2csv": "^5.0.6",
+    "moment-timezone": "^0.5.33",
+    "request": "^2.88.2",
+    "request-promise-native": "^1.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.1",
+    "nodemon": "^2.0.13",
+    "typescript": "^4.4.2"
+  },
+  "gitHead": "232009371d15fb1bc0dbbe0c4bebcbe7445c99cc"
+}

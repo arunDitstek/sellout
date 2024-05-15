@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+import "error.proto";
+import "common.proto";
+
+/***************************************************************************************
+  Seating Models
+****************************************************************************************/
+
+message Seating {
+  string _id = 0;
+  string orgId = 1;
+  string publicKey = 2;
+  string secretKey = 3;
+  string designerKey = 4;
+  int32 createdAt = 5;
+  int32 updatedAt = 6;
+}
+
+/***************************************************************************************
+  Seating
+****************************************************************************************/
+
+message CreateSeatingRequest {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+message CreateSeatingResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Seating seating = 2;
+}
+
+message BookSeatsRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+  string holdToken = 3;
+  repeated string seats = 4;
+}
+
+message BookSeatsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+
+message BookSeasonSeatsRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string seasonId = 2;
+  string holdToken = 3;
+  repeated string seats = 4;
+  // repeated string eventIds = 5;
+}
+
+message BookSeasonSeatsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+message ReleaseSeatsRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+  repeated string seats = 3;
+}
+
+message ReleaseSeatsResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+message FindOrganizationSeatingRequest {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+message FindOrganizationSeatingResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Seating seating = 2;
+}
+
+service SeatingService {
+  // Seating
+  rpc createSeating(CreateSeatingRequest) returns (CreateSeatingResponse) {}
+  rpc bookSeats(BookSeatsRequest) returns (BookSeatsResponse) {}
+  rpc bookSeasonSeats(BookSeasonSeatsRequest) returns (BookSeasonSeatsResponse) {}
+  rpc releaseSeats(ReleaseSeatsRequest) returns (ReleaseSeatsResponse) {}
+  rpc findOrganizationSeating(FindOrganizationSeatingRequest) returns (FindOrganizationSeatingResponse) {}
+}

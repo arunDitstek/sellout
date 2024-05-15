@@ -1,0 +1,36 @@
+import IFee, { FeeAppliedByEnum } from '../interfaces/IFee";
+
+export default {
+  processingFees(fees: IFee[]) {
+    return fees.filter((fee: IFee) => {
+      if (fee.appliedBy === FeeAppliedByEnum.Sellout || fee.appliedBy === FeeAppliedByEnum.Stripe) {
+        return true;
+      }
+      return false;
+    });
+  },
+  selloutFees(fees: IFee[]) {
+    return fees.filter((fee: IFee) => {
+      if (fee.appliedBy === FeeAppliedByEnum.Sellout) {
+        return true;
+      }
+      return false;
+    });
+  },
+  stripeFees(fees: IFee[]) {
+    return fees.filter((fee: IFee) => {
+      if (fee.appliedBy === FeeAppliedByEnum.Stripe) {
+        return false;
+      }
+      return true;
+    });
+  },
+  promoterFees(fees: IFee[]) {
+    return fees.filter((fee: IFee) => {
+      if (fee.appliedBy === FeeAppliedByEnum.Sellout || fee.appliedBy === FeeAppliedByEnum.Stripe) {
+        return false;
+      }
+      return true;
+    });
+  },
+};

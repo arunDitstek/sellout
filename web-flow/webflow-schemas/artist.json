@@ -1,0 +1,197 @@
+{
+  "_id": "5d88f46ec5599e2157b23c89",
+  "lastUpdated": "2019-09-23T16:35:58.814Z",
+  "createdOn": "2019-07-18T21:07:09.126Z",
+  "name": "Performers",
+  "slug": "performers",
+  "singularName": "Performer",
+  "fields": [{
+    "name": "Performer Type",
+    "slug": "performer-type",
+    "type": "Option",
+    "required": false,
+    "editable": true,
+    "id": "f8e2dca56ed5946db45f9d9619142859",
+    "validations": {
+      "options": [{
+        "name": "Musician",
+        "id": "a47910677530a553a7e5b408d47ba16a"
+      }]
+    }
+  }, {
+    "name": "Poster Image",
+    "slug": "poster-image",
+    "type": "ImageRef",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "858adbc8bb16bc2838ca5fdd64c6d834"
+  }, {
+    "name": "Bio",
+    "slug": "bio",
+    "type": "RichText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "2cc9e18cfd433dcbdf92735e22f80d4b"
+  }, {
+    "name": "Plain Text Bio",
+    "slug": "plain-text-bio",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "52f25a9252a774569b5f3f6f32ac2272",
+    "validations": {
+      "singleLine": false
+    }
+  }, {
+    "name": "Official Website",
+    "slug": "official-website",
+    "type": "Link",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "83a8f8efe16066eb92dc01055dc9f2b4"
+  }, {
+    "name": "Facebook Link",
+    "slug": "facebook-link",
+    "type": "Link",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "6ae0d295dff7f2894e2613e57337a71a"
+  }, {
+    "name": "Instagram Link",
+    "slug": "instagram-link",
+    "type": "Link",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "4775358ee63a2d8b3065a8a9bd52ee2d"
+  }, {
+    "name": "Youtube Link",
+    "slug": "youtube-link",
+    "type": "Link",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "7b2498816563b2b171d0362bda5cc2d4"
+  }, {
+    "name": "Spotify Link",
+    "slug": "spotify-link",
+    "type": "Link",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "1330a8921cc61e3c9c3aecf79704313e"
+  }, {
+    "name": "Apple Music Link",
+    "slug": "apple-music-link",
+    "type": "Link",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "5546dc02f8c4e33d21ec677cd5588b69"
+  }, {
+    "name": "Sellout ID",
+    "slug": "sellout-id",
+    "type": "PlainText",
+    "required": false,
+    "editable": true,
+    "helpText": "",
+    "id": "6f5abc3cc149b155b2ebba0ecee0ff65",
+    "validations": {
+      "singleLine": true
+    }
+  }, {
+    "name": "Name",
+    "slug": "name",
+    "type": "PlainText",
+    "required": true,
+    "editable": true,
+    "id": "f736449118cbcf7b42a64cea7a01dbd6",
+    "validations": {
+      "maxLength": 256
+    }
+  }, {
+    "name": "Slug",
+    "slug": "slug",
+    "type": "PlainText",
+    "required": true,
+    "editable": true,
+    "unique": true,
+    "id": "525d63b197c8117b5b1c86bfeec589c5",
+    "validations": {
+      "maxLength": 256,
+      "messages": {
+        "pattern": "Must be alphanumerical and not contain any spaces or special characters",
+        "maxLength": "Must be less than 256 characters"
+      }
+    }
+  }, {
+    "name": "Archived",
+    "slug": "_archived",
+    "type": "Bool",
+    "required": true,
+    "editable": true,
+    "id": "7e8c83889b7dce054840fc66e5ab705b",
+    "default": false
+  }, {
+    "name": "Draft",
+    "slug": "_draft",
+    "type": "Bool",
+    "required": true,
+    "editable": true,
+    "id": "d52145a011560f805a5ed84f9c7242ba",
+    "default": false
+  }, {
+    "name": "Created On",
+    "slug": "created-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "46e4ba5558c40f9a2906607f35af9391"
+  }, {
+    "name": "Updated On",
+    "slug": "updated-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "5567ccaf398e93511f22f87ebb484f74"
+  }, {
+    "name": "Published On",
+    "slug": "published-on",
+    "type": "Date",
+    "required": false,
+    "editable": false,
+    "id": "e0751cd153169a5c7606fa2cc045b1f1"
+  }, {
+    "name": "Created By",
+    "slug": "created-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "606db581e4fbb60412494fb0a1d64d0b"
+  }, {
+    "name": "Updated By",
+    "slug": "updated-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "684b41f29fb0b86b27c0679a56adbe92"
+  }, {
+    "name": "Published By",
+    "slug": "published-by",
+    "type": "User",
+    "required": false,
+    "editable": false,
+    "id": "ed845021955a3303ca2653fb37a073b5"
+  }],
+  "_meta": {
+    "rateLimit": {
+      "limit": 60,
+      "remaining": 46
+    }
+  }
+}

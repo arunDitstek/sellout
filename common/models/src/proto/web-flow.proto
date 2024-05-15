@@ -1,0 +1,315 @@
+syntax = "proto3";
+
+import "error.proto";
+import "common.proto";
+
+/***************************************************************************************
+  WebFlow Models
+****************************************************************************************/
+
+message WebFlow {
+  string _id = 0;
+  string orgId = 1;
+  repeated WebFlowSite sites = 2;
+  repeated WebFlowEntity entities = 3;
+  int32 createdAt = 4;
+  int32 updatedAt = 5;
+}
+
+message WebFlowSite {
+  string _id = 0;
+  string name = 1;
+  string webFlowId = 2;
+  bool enabled = 3;
+  string eventCollectionId = 4;
+  string venueCollectionId = 5;
+  string artistCollectionId = 6;
+  string organizationCollectionId = 7;
+  string eventTypeCollectionId = 8;
+  string previewUrl = 9;
+  repeated WebFlowSiteDomain domains = 10;
+  int32 createdAt = 11;
+  int32 updatedAt = 12;
+}
+
+message WebFlowSiteDomain {
+  string _id = 0;
+  string name = 1;
+  int32 lastPublishedAt = 2;
+}
+
+message WebFlowEntityId {
+  string webFlowSiteId = 0;
+  string webFlowEntityId = 1;
+  string slug = 2;
+  WebFlowSite webFlowSite = 3;
+}
+
+message WebFlowEntity {
+  string _id = 0;
+  string entityType = 1;
+  string name = 2;
+  string selloutId = 3;
+  repeated WebFlowEntityId webFlowIds = 4;
+  repeated string alwaysPublishTo = 5;
+  int32 createdAt = 6;
+  int32 updatedAt = 7;
+}
+
+/***************************************************************************************
+  WebFlow
+****************************************************************************************/
+
+message CreateWebFlowRequest {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+message CreateWebFlowResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+message FindOrganizationWebFlowRequest {
+  string spanContext = 0;
+  string orgId = 1;
+}
+
+message FindOrganizationWebFlowResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+message FindWebFlowEntityRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string selloutId = 2;
+  string entityType = 3;
+}
+
+message FindWebFlowEntityResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlowEntity entity  = 2;
+}
+
+
+/***************************************************************************************
+  WebFlow Site
+****************************************************************************************/
+
+message ListWebFlowSitesRequest {
+  string spanContext = 0;
+}
+
+message ListWebFlowSitesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated WebFlowSite sites = 2;
+}
+
+message CreateWebFlowSiteRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string webFlowId = 2;
+}
+
+message CreateWebFlowSiteResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+message RemapWebFlowSiteRequest {
+  string spanContext = 0; 
+  string webFlowId = 1;
+}
+
+message RemapWebFlowSiteResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated WebFlow webFlows = 2;
+}
+
+/***************************************************************************************
+  Publish Event
+****************************************************************************************/
+
+message PublishWebFlowEventRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+  string siteId = 3;
+}
+
+message PublishWebFlowEventResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+message UnpublishWebFlowEventRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+  string siteId = 3;
+}
+
+message UnpublishWebFlowEventResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+message UpdateWebFlowEventRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string eventId = 2;
+}
+
+message UpdateWebFlowEventResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+/***************************************************************************************
+  Publish Organization
+****************************************************************************************/
+
+message PublishWebFlowOrganizationRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string siteId = 2;
+  WebFlow webFlow = 3;
+  bool live = 4;
+}
+
+message PublishWebFlowOrganizationResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+message UnpublishWebFlowOrganizationRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string siteId = 2;
+  WebFlow webFlow = 3;
+}
+
+message UnpublishWebFlowOrganizationResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+/***************************************************************************************
+  Publish Venue
+****************************************************************************************/
+
+message PublishWebFlowVenueRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string venueId = 2;
+  string siteId = 3;
+  WebFlow webFlow = 4;
+  bool live = 5;
+}
+
+message PublishWebFlowVenueResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+message UnpublishWebFlowVenueRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string venueId = 2;
+  string siteId = 3;
+  WebFlow webFlow = 4;
+}
+
+message UnpublishWebFlowVenueResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+/***************************************************************************************
+  Publish Artist
+****************************************************************************************/
+
+message PublishWebFlowArtistRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string artistId = 2;
+  string siteId = 3;
+  WebFlow webFlow = 4;
+  bool live = 5;
+}
+
+message PublishWebFlowArtistResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+message UnpublishWebFlowArtistRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string artistId = 2;
+  string siteId = 3;
+  WebFlow webFlow = 4;
+}
+
+message UnpublishWebFlowArtistResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+/***************************************************************************************
+  WebFlow Entities
+****************************************************************************************/
+
+message UpdateVenuePublishingRequest {
+  string spanContext = 0;
+  string orgId = 1;
+  string venueId = 2;
+  repeated string alwaysPublishTo = 3;
+}
+
+message UpdateVenuePublishingResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  WebFlow webFlow = 2;
+}
+
+service WebFlowService {
+  // WebFlow
+  rpc createWebFlow(CreateWebFlowRequest) returns (CreateWebFlowResponse) {}
+  rpc findOrganizationWebFlow(FindOrganizationWebFlowRequest) returns (FindOrganizationWebFlowResponse) {}
+  rpc findWebFlowEntity(FindWebFlowEntityRequest) returns (FindWebFlowEntityResponse) {}
+  // WebFlow Sites
+  rpc createWebFlowSite(CreateWebFlowSiteRequest) returns (CreateWebFlowSiteResponse) {}
+  rpc listWebFlowSites(ListWebFlowSitesRequest) returns (ListWebFlowSitesResponse) {}
+  rpc remapWebFlowSite(RemapWebFlowSiteRequest) returns (RemapWebFlowSiteResponse) {}
+  // Publish Event
+  rpc publishWebFlowEvent(PublishWebFlowEventRequest) returns (PublishWebFlowEventResponse) {}
+  rpc unpublishWebFlowEvent(UnpublishWebFlowEventRequest) returns (UnpublishWebFlowEventResponse) {}
+  rpc updateWebFlowEvent(UpdateWebFlowEventRequest) returns (UpdateWebFlowEventResponse) {}
+  // Publish Organization
+  rpc publishWebFlowOrganization(PublishWebFlowOrganizationRequest) returns (PublishWebFlowOrganizationResponse) {}
+  rpc unpublishWebFlowOrganization(UnpublishWebFlowOrganizationRequest) returns (UnpublishWebFlowOrganizationResponse) {}
+  // Publish Venue
+  rpc publishWebFlowVenue(PublishWebFlowVenueRequest) returns (PublishWebFlowVenueResponse) {}
+  rpc unpublishWebFlowVenue(UnpublishWebFlowVenueRequest) returns (UnpublishWebFlowVenueResponse) {}
+  // Publish Artist
+  rpc publishWebFlowArtist(PublishWebFlowArtistRequest) returns (PublishWebFlowArtistResponse) {}
+  rpc unpublishWebFlowArtist(UnpublishWebFlowArtistRequest) returns (UnpublishWebFlowArtistResponse) {}
+  // WebFlow Entities
+  rpc updateVenuePublishing(UpdateVenuePublishingRequest) returns (UpdateVenuePublishingResponse) {}
+}

@@ -1,0 +1,29 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./.dist/",
+    "declaration": true,
+    "jsx": "react",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": false,
+    "paths": {},
+    "types": [
+      "node",
+      "long"
+    ]
+  },
+  "typeRoots": [
+    "node_modules/@types"
+  ],
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

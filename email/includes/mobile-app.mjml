@@ -1,0 +1,12 @@
+<mj-section background-color="#ffffff" padding-left="15px" padding-right="15px" padding-top="5px" padding-bottom="5px">
+  <mj-column width="100%">
+    <mj-text color="#3E4C6F" font-size="18px" line-height="21px" font-weight="500" padding-bottom="5px" padding-top="0">
+      Download The Sellout Mobile App
+    </mj-text>
+    <mj-text color="#3E4C6F" font-size="14px" line-height="20px" font-weight="400" padding-bottom="0px" padding-top="10px">
+      Enjoy a more streamlined ticketing experience. Download the Sellout app to seamlessly buy, sell, or transfer tickets.
+    </mj-text>
+  </mj-column>
+</mj-section>
+
+<mj-include path="./content-divider.mjml" />

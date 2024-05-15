@@ -1,0 +1,6 @@
+<mj-button background-color="#FDC33C" align="center" color="#ffffff" font-size="18px" font-weight="500" href="https://google.com" width="100%" height="35px">
+  Sell your ticket
+</mj-button>
+<mj-button background-color="#FFF3D8" align="center" color="#FDC33C" font-size="18px" font-weight="500" href="https://google.com" width="100%" height="35px">
+  Transfer tickets to a friend
+</mj-button>

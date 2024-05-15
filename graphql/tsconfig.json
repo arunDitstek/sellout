@@ -1,0 +1,33 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "inlineSourceMap": true,
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "target": "es6",
+    "esModuleInterop": true,
+    "lib": ["es6", "dom", "esnext.asynciterable"],
+    "module": "commonjs",
+    "outDir": "./.dist/",
+    "declaration": true,
+    "jsx": "react",
+    // "sourceMap": true,
+    // "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "paths": {},
+    "types": [
+      "node",
+      "long",
+      "mocha"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/templates",
+  ],
+  "exclude": [
+    "node_modules",
+    "test/*",
+    "dist/*"
+  ]
+}

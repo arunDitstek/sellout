@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+/*
+ * We leverage well-understood HTTP status codes to define the types of errors,
+ * which can occur across our upstream services.  These should be localized and translated
+ * before being displayed to end users.
+ *
+ */
+enum StatusCode {
+  UNKNOWN_CODE = 0;
+
+  OK = 200;
+
+  BAD_REQUEST = 400;
+  UNAUTHORIZED = 401;
+  FORBIDDEN = 403;
+  UNPROCESSABLE_ENTITY = 422;
+  NOT_FOUND = 404;
+
+  INTERNAL_SERVER_ERROR = 500;
+  GATEWAY_TIMEOUT = 504;
+}
+
+/*
+ * Field-level error responses, i.e. { key: 'firstName', message: '"firstName" is required' }.
+ * Note, these messages eventually need to be symbolic, and also localized/translated.
+ * Right now, we're mainly using the English strings returned by the Joi validators.
+ */
+message Error {
+  string key = 1;
+  string message = 2;
+}

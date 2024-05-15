@@ -1,0 +1,167 @@
+syntax = "proto3";
+
+import "error.proto";
+import "common.proto";
+
+
+message Role {
+  string _id = 0;
+  string orgId = 1;
+  string userId = 2;
+  string userEmail = 3;
+  int32 createdAt = 4;
+  string createdBy = 5;
+  string role = 6;
+  int32 acceptedAt = 7;
+}
+
+/****************************************************************************************
+Create Role
+****************************************************************************************/
+message CreateRoleRequest {
+  string spanContext = 0;
+  Role role = 1;
+  string creatorId = 2;
+  bool update = 3;
+}
+
+message CreateRoleResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Role role = 2;
+}
+
+/****************************************************************************************
+Delete Role
+****************************************************************************************/
+message DeleteRoleRequest {
+  string spanContext = 0;
+  string roleId = 2;
+}
+
+message DeleteRoleResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+/****************************************************************************************
+Accept Role
+****************************************************************************************/
+message AcceptRoleRequest {
+  string spanContext = 0;
+  string roleId = 1;
+  bool accept = 2;
+}
+
+message AcceptRoleResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Role role = 2;
+}
+
+/****************************************************************************************
+Assign UserId 
+****************************************************************************************/
+
+message AssignUserIdToRolesRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string userEmail = 2;
+}
+
+message AssignUserIdToRolesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+
+
+message UpdateRoleEmailRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string userEmail = 2;
+}
+
+message UpdateRoleEmailResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+}
+
+/****************************************************************************************
+Find Role
+****************************************************************************************/
+message FindRoleByIdRequest {
+  string spanContext = 0;
+  string roleId = 1;
+}
+
+message FindRoleByIdResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Role role = 2;
+}
+
+/****************************************************************************************
+Find User Role
+****************************************************************************************/
+message FindUserRoleRequest {
+  string spanContext = 0;
+  string userId = 1;
+  string orgId = 2;
+}
+
+message FindUserRoleResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  Role role = 2;
+}
+
+/****************************************************************************************
+Find User Roles
+****************************************************************************************/
+message FindUserRolesRequest {
+  string spanContext = 0;
+  string userId = 1;
+}
+
+message FindUserRolesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Role roles = 2;
+}
+
+
+/****************************************************************************************
+Query Roles
+****************************************************************************************/
+message QueryRolesRequest {
+  string spanContext = 0;
+  repeated Query query  = 1;
+  Pagination pagination = 2;
+}
+
+message QueryRolesResponse {
+  StatusCode status = 0;
+  repeated Error errors = 1;
+  repeated Role roles = 2;
+}
+
+
+
+service RoleService {
+  // Create
+  rpc createRole(CreateRoleRequest) returns (CreateRoleResponse) {}
+  // Delete
+  rpc deleteRole(DeleteRoleRequest) returns (DeleteRoleResponse) {}
+  // Accept
+  rpc acceptRole(AcceptRoleRequest) returns (AcceptRoleResponse) {}
+  // Assign UserId
+  rpc assignUserIdToRoles(AssignUserIdToRolesRequest) returns (AssignUserIdToRolesResponse) {}
+  rpc updateRoleEmail(UpdateRoleEmailRequest) returns (UpdateRoleEmailResponse) {}
+  // Find
+  rpc findRoleById(FindRoleByIdRequest) returns (FindRoleByIdResponse) {}
+  rpc findUserRole(FindUserRoleRequest) returns (FindUserRoleResponse) {}
+  rpc findUserRoles(FindUserRolesRequest) returns (FindUserRolesResponse) {}
+  // List
+  rpc queryRoles(QueryRolesRequest) returns (QueryRolesResponse) {}
+}

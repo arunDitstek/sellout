@@ -1,0 +1,24 @@
+<mjml>
+  <mj-include path="../includes/head.mjml"></mj-include>
+  <mj-body background-color="#F9F9F9" width="600px">
+    <mj-include path="../includes/top-bar.mjml"></mj-include>
+    <mj-wrapper padding-top="0" padding-bottom="0px" css-class="body-section">
+      <mj-include path="../includes/event-preview-side.mjml"></mj-include>
+      <mj-section background-color="#ffffff" padding-top="0px" padding-bottom="0px">
+        <mj-column width="100%">
+          <mj-text align="justify" color="#333333" font-weight="600" padding-bottom="10px" font-size="16px" line-height="28px" padding-top="0px" padding-bottom="0px">Hello!</mj-text>
+          <mj-text align="justify" color="#333333" font-weight="400" font-size="15px" line-height="26px" padding-top="0px" padding-bottom="0px">{{ description }}</mj-text>
+          <mj-text align="justify" color="#333333"  font-weight="400" padding-top="16px" font-size="15px" line-height="26px" padding-top="0px" padding-bottom="0px">The Sellout Team</mj-text>
+        </mj-column>
+      </mj-section>
+         <mj-section background-color="#ffffff" padding="0px 0px 20px 0px">
+        <mj-column>
+          <mj-button align="center" href="{{url}}" background-color="#FF6802" color="#FFF" width="50%" height="45px" font-size="15px" font-weight="400" border-radius="10px">Get Tickets Now!</mj-button>
+        </mj-column>
+      </mj-section>
+      <mj-include path="../includes/venue-location.mjml"></mj-include>
+      <mj-include path="../includes/customer-support.mjml"></mj-include>
+    </mj-wrapper>
+    <mj-include path="../includes/sellout-info.mjml"></mj-include>
+  </mj-body>
+</mjml>

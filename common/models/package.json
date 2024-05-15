@@ -1,0 +1,35 @@
+{
+  "name": "@sellout/models",
+  "version": "0.0.278",
+  "description": "Sellout.io models",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc --project . && npm run build:pb",
+    "build:pb": "pbjs -t static-module -w commonjs -o ./.dist/sellout-proto.js src/proto/*.proto",
+    "start": "nodemon --watch src -e json,js,ts,proto -x \"npm run build\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "www.github.com/sellout-tickets/sellout/common/models"
+  },
+  "author": "samheutmaker@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/joi": "^16.1.7",
+    "@sellout/utils": "^0.0.278",
+    "@types/hapi__joi": "^16.0.1",
+    "@types/shortid": "^0.0.29",
+    "apollo-link-debounce": "^2.1.0",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.12.5",
+    "shortid": "^2.2.16"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.1",
+    "nodemon": "^2.0.13",
+    "protobufjs": "^6.11.2",
+    "typescript": "^4.4.2"
+  },
+  "gitHead": "232009371d15fb1bc0dbbe0c4bebcbe7445c99cc"
+}
